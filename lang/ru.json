@@ -1,0 +1,15 @@
+{
+  "home": "Главная",
+  "projects": "Проекты",
+  "contact": "Контакты",
+  "heroTitle": "АЛЬФА ФАСАД",
+  "projectsTitle": "Проекты",
+  "contactTitle": "Контакт",
+  "labels": {
+    "name": "Имя",
+    "email": "Эл. почта",
+    "message": "Сообщение",
+    "send": "Отправить"
+  },
+  "footer": "Спасибо за просмотр! — TURA"
+}

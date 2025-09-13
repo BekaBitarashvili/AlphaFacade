@@ -1,0 +1,15 @@
+{
+  "home": "მთავარი",
+  "projects": "პროექტები",
+  "contact": "კონტაქტი",
+  "heroTitle": "ალფა ფასადი",
+  "projectsTitle": "პროექტები",
+  "contactTitle": "კონტაქტი",
+  "labels": {
+    "name": "სახელი",
+    "email": "ელ.ფოსტა",
+    "message": "შეტყობინება",
+    "send": "გაგზავნა"
+  },
+  "footer": "გმადლობთ ნახვისთვის! — TURA"
+}

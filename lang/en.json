@@ -1,0 +1,15 @@
+{
+  "home": "Home",
+  "projects": "Projects",
+  "contact": "Contact",
+  "heroTitle": "ALPHA FACADE",
+  "projectsTitle": "Projects",
+  "contactTitle": "Contact",
+  "labels": {
+    "name": "Your name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send Message"
+  },
+  "footer": "Thanks for watching! — TURA"
+}
