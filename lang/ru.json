@@ -1,15 +1,24 @@
 {
-  "home": "Главная",
-  "projects": "Проекты",
-  "contact": "Контакты",
-  "heroTitle": "АЛЬФА ФАСАД",
+  "nav": { "home": "Главная", "projects": "Проекты", "contact": "Контакты" },
+  "homeSub": "Младший веб-дизайнер — лендинг",
   "projectsTitle": "Проекты",
+  "projectsDesc": "Наведи и кликни — проект выйдет на передний план. Масштабируемые плитки с анимацией.",
   "contactTitle": "Контакт",
-  "labels": {
-    "name": "Имя",
-    "email": "Эл. почта",
-    "message": "Сообщение",
-    "send": "Отправить"
-  },
-  "footer": "Спасибо за просмотр! — TURA"
+  "contactDesc": "Хотите связаться? Напишите сообщение. Демо — только валидация на стороне клиента.",
+  "address": "Тбилиси, Грузия",
+  "phone": "+995 123 45 678",
+  "email": "hello@alpha.dev",
+  "labels": { "name": "Имя", "email": "Эл. почта", "message": "Сообщение", "send": "Отправить" },
+  "footer": "Спасибо за просмотр! — TURA",
+  "projects": [
+    { "id": "p1", "title": "ALPHA", "sub": "Личный бренд", "image": "images/project1.jpg", "detail": "Лендинг, смелая типографика и минимальный UI.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p2", "title": "Keet Cafe", "sub": "Сайт кафе", "image": "images/project2.jpg", "detail": "Страницы меню, бронирование и адаптивный дизайн.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p3", "title": "Портфолио Апп", "sub": "Интерактивный UI", "image": "images/project3.jpg", "detail": "Интерактивная сетка проектов с анимациями.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p4", "title": "Horizon", "sub": "Платформа электронной коммерции", "image": "images/project4.jpg", "detail": "Современный и элегантный веб-сайт для электронной коммерции, ориентированный на пользовательский опыт.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p5", "title": "Nexus", "sub": "Креативное агентство", "image": "images/project5.jpg", "detail": "Динамичная целевая страница для креативного агентства, демонстрирующая их последние работы.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p6", "title": "Aura", "sub": "Фитнес-приложение", "image": "images/project6.jpg", "detail": "Дизайн, ориентированный на мобильные устройства, для фитнес-приложения, с фокусом на осознанность и отслеживание здоровья.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p7", "title": "Cortex", "sub": "Технологический блог", "image": "images/project7.jpg", "detail": "Чистый и минималистичный дизайн блога для статей, связанных с технологиями и наукой.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p8", "title": "Zenith", "sub": "Портфолио фотографа", "image": "images/project8.jpg", "detail": "Элегантный веб-сайт-портфолио, разработанный для демонстрации высококачественной фотографии.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p9", "title": "Fusion", "sub": "Служба доставки еды", "image": "images/project9.jpg", "detail": "Яркий и интуитивно понятный пользовательский интерфейс для платформы доставки еды, разработанный для быстрого и простого заказа.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] }
+  ]
 }

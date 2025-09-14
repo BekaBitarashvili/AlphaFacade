@@ -1,15 +1,24 @@
 {
-  "home": "მთავარი",
-  "projects": "პროექტები",
-  "contact": "კონტაქტი",
-  "heroTitle": "ალფა ფასადი",
+  "nav": { "home": "მთავარი", "projects": "პროექტები", "contact": "კონტაქტი" },
+  "homeSub": "ახალი ვებ-დიზაინერი — ლენდინგი",
   "projectsTitle": "პროექტები",
+  "projectsDesc": "აჩვენე, მოინახულე და დააკლიკე — პროექტები გამოდის წინა პლანზე.",
   "contactTitle": "კონტაქტი",
-  "labels": {
-    "name": "სახელი",
-    "email": "ელ.ფოსტა",
-    "message": "შეტყობინება",
-    "send": "გაგზავნა"
-  },
-  "footer": "გმადლობთ ნახვისთვის! — TURA"
+  "contactDesc": "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება. დემო ვერსია—დალია მხოლოდ ფორმის ვალიდაცია.",
+  "address": "თბილისი, საქართველო",
+  "phone": "+995 123 45 678",
+  "email": "hello@alpha.dev",
+  "labels": { "name": "სახელი", "email": "ელ.ფოსტა", "message": "შეტყობინება", "send": "გაშვება" },
+  "footer": "გმადლობთ შემოწმებისთვის! — TURA",
+  "projects": [
+    { "id": "p1", "title": "ALPHA", "sub": "პირადი ბრენდინგი", "image": "images/project1.jpg", "detail": "ლენდინგი, თამამი ტაიპოგრაფია და მინიმალური UI.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p2", "title": "Keet Cafe", "sub": "კაფე ვებ", "image": "images/project2.jpg", "detail": "მენიუ, ბრონირების UI და რეაქტიული დიზაინი.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p3", "title": "პორტფოლიო აპი", "sub": "ინტერაქტიული UI", "image": "images/project3.jpg", "detail": "ინტერაქტიული გრიდი და ანიმაციები.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p4", "title": "Horizon", "sub": "ელექტრონული კომერციის პლატფორმა", "image": "images/project4.jpg", "detail": "თანამედროვე და დახვეწილი ელექტრონული კომერციის ვებსაიტი, რომელიც ფოკუსირებულია მომხმარებლის გამოცდილებაზე.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p5", "title": "Nexus", "sub": "კრეატიული სააგენტო", "image": "images/project5.jpg", "detail": "დინამიური სადესანტო გვერდი კრეატიული სააგენტოსთვის, რომელიც წარმოაჩენს მათ უახლეს ნამუშევრებს.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p6", "title": "Aura", "sub": "ველნესის აპლიკაცია", "image": "images/project6.jpg", "detail": "მობილურზე ორიენტირებული დიზაინი ველნესის აპლიკაციისთვის, რომელიც ფოკუსირებულია გაცნობიერებულობასა და ჯანმრთელობის თვალყურის დევნებაზე.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p7", "title": "Cortex", "sub": "ტექნოლოგიური ბლოგი", "image": "images/project7.jpg", "detail": "სუფთა და მინიმალისტური ბლოგის დიზაინი ტექნოლოგიებთან და მეცნიერებასთან დაკავშირებული სტატიებისთვის.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p8", "title": "Zenith", "sub": "ფოტოგრაფიის პორტფოლიო", "image": "images/project8.jpg", "detail": "ელეგანტური პორტფოლიოს ვებსაიტი, შექმნილი მაღალი ხარისხის ფოტოგრაფიის წარმოსაჩენად.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p9", "title": "Fusion", "sub": "საკვების მიტანის სერვისი", "image": "images/project9.jpg", "detail": "ცოცხალი და ინტუიციური UI საკვების მიტანის პლატფორმისთვის, შექმნილი სწრაფი და მარტივი შეკვეთისთვის.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] }
+  ]
 }

@@ -363,6 +363,90 @@
   .muted{ color:var(--muted); font-size:13px; }
   .center{ text-align:center }
   .small { font-size:12px; color:var(--muted) }
+
+  /* ---------- Modal gallery styles (minimal & self-contained) ---------- */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(0,0,0,0.85);
+    z-index:120;
+    opacity:0;
+    pointer-events:none;
+    transition: opacity 240ms ease;
+  }
+  .modal-overlay.open{
+    opacity:1;
+    pointer-events:auto;
+  }
+  .modal-content{
+    max-width:920px;
+    width:92%;
+    background:transparent;
+    outline:none;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:12px;
+  }
+  .modal-view{
+    width:100%;
+    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
+    padding:18px;
+    border-radius:10px;
+    box-shadow:var(--card-shadow);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+  }
+  .modal-image{
+    max-height:70vh;
+    width:auto;
+    max-width:100%;
+    border-radius:8px;
+    display:block;
+  }
+  .modal-caption{
+    color:var(--muted);
+    font-size:13px;
+    text-align:center;
+  }
+  .modal-controls{
+    position:absolute;
+    left:12px;
+    top:50%;
+    transform:translateY(-50%);
+    display:flex;
+    gap:8px;
+  }
+  .modal-controls .btn{
+    background:rgba(0,0,0,0.4);
+    border:1px solid rgba(255,255,255,0.06);
+    color:var(--accent);
+    padding:8px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+  }
+  .modal-close{
+    position:absolute;
+    right:12px;
+    top:12px;
+    background:transparent;
+    border:1px solid rgba(255,255,255,0.06);
+    color:var(--muted);
+    padding:8px 10px;
+    border-radius:8px;
+    cursor:pointer;
+    font-weight:700;
+  }
+  @media (max-width:480px){
+    .modal-controls { left:6px; }
+    .modal-close { right:6px; top:6px; padding:6px 8px; }
+  }
 </style>
 </head>
 <body>
@@ -465,6 +549,23 @@
     </a>
   </div>
 
+    <!-- Modal gallery -->
+    <div id="galleryModal" class="modal-overlay" aria-hidden="true" tabindex="-1" role="dialog" aria-label="Project images">
+      <div class="modal-content" role="document">
+        <div class="modal-view">
+          <div class="modal-controls" aria-hidden="false">
+            <button class="btn modal-prev" title="Previous (left arrow)">‹</button>
+          </div>
+          <img class="modal-image" src="" alt="Project image" />
+          <button class="modal-close" title="Close (Esc)">Close</button>
+          <div class="modal-controls" style="left:auto; right:12px; top:50%; transform:translateY(-50%);">
+            <button class="btn modal-next" title="Next (right arrow)">›</button>
+          </div>
+        </div>
+        <div class="modal-caption" aria-live="polite"></div>
+      </div>
+    </div>
+
     <script>
       /*******************************
        * DATA & TRANSLATIONS
@@ -485,7 +586,13 @@
           projects: [
             { id: 'p1', title: "ALPHA", sub: "Personal branding", color: "linear-gradient(135deg,#1f1f1f,#161616)", detail: "Landing page, bold typography and minimal UI." },
             { id: 'p2', title: "Keet Cafe", sub: "Cafe website", color: "linear-gradient(135deg,#232323,#141414)", detail: "Menu pages, booking UI and responsive layout." },
-            { id: 'p3', title: "Portfolio App", sub: "Interactive UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "Interactive project grid with animations." }
+            { id: 'p3', title: "Portfolio App", sub: "Interactive UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "Interactive project grid with animations." },
+            { id: 'p4', title: "Project Four", sub: "New design", color: "linear-gradient(135deg,#252525,#121212)", detail: "Demo project with gallery." },
+            { id: 'p5', title: "Project Five", sub: "New design", color: "linear-gradient(135deg,#282828,#131313)", detail: "Demo project with gallery." },
+            { id: 'p6', title: "Project Six", sub: "New design", color: "linear-gradient(135deg,#292929,#141414)", detail: "Demo project with gallery." },
+            { id: 'p7', title: "Project Seven", sub: "New design", color: "linear-gradient(135deg,#2a2a2a,#151515)", detail: "Demo project with gallery." },
+            { id: 'p8', title: "Project Eight", sub: "New design", color: "linear-gradient(135deg,#2b2b2b,#161616)", detail: "Demo project with gallery." },
+            { id: 'p9', title: "Project Nine", sub: "New design", color: "linear-gradient(135deg,#2c2c2c,#171717)", detail: "Demo project with gallery." }
           ]
         },
         ka: {
@@ -494,16 +601,22 @@
           projectsTitle: "პროექტები",
           projectsDesc: "აჩვენე, მოინახულე და დააკლიკე — პროექტები გამოდის წინა პლანზე.",
           contactTitle: "კონტაქტი",
-          contactDesc: "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება. დემო ვერსია—დალია მხოლოდ ფორმის ვალიდაცია.",
+          contactDesc: "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება. დემო ვერსია—შეიძლება მხოლოდ ფორმის ვალიდაცია.",
           address: "თბილისი, საქართველო",
           phone: "+995 123 45 678",
           email: "hello@alpha.dev",
-          labels: { name: "სახელი", email: "ელ.ფოსტა", message: "შეტყობინება", send: "გაშვება" },
-          footer: "გმადლობთ შემოწმებისთვის! — TURA",
+          labels: { name: "სახელი", email: "ელ.ფოსტა", message: "შეტყობინება", send: "გაგზავნა" },
+          footer: "გმადლობთ შემოწმებისთვის! — ALPHA FACADE",
           projects: [
             { id: 'p1', title: "ALPHA", sub: "პირადი ბრენდინგი", color: "linear-gradient(135deg,#1f1f1f,#161616)", detail: "ლენდინგი, თამამი ტაიპოგრაფია და მინიმალური UI." },
             { id: 'p2', title: "Keet Cafe", sub: "კაფე ვებ", color: "linear-gradient(135deg,#232323,#141414)", detail: "მენიუ, ბრონირების UI და რეაქტიული დიზაინი." },
-            { id: 'p3', title: "პორტფოლიო აპი", sub: "ინტერაქტიული UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "ინტერაქტიული გრიდი და ანიმაციები." }
+            { id: 'p3', title: "პორტფოლიო აპი", sub: "ინტერაქტიული UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "ინტერაქტიული გრიდი და ანიმაციები." },
+            { id: 'p4', title: "პროექტი 4", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#252525,#121212)", detail: "დემო პროექტი გალერეით." },
+            { id: 'p5', title: "პროექტი 5", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#282828,#131313)", detail: "დემო პროექტი გალერეით." },
+            { id: 'p6', title: "პროექტი 6", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#292929,#141414)", detail: "დემო პროექტი გალერეით." },
+            { id: 'p7', title: "პროექტი 7", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#2a2a2a,#151515)", detail: "დემო პროექტი გალერეით." },
+            { id: 'p8', title: "პროექტი 8", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#2b2b2b,#161616)", detail: "დემო პროექტი გალერეით." },
+            { id: 'p9', title: "პროექტი 9", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#2c2c2c,#171717)", detail: "დემო პროექტი გალერეით." }
           ]
         },
         ru: {
@@ -517,11 +630,17 @@
           phone: "+995 123 45 678",
           email: "hello@alpha.dev",
           labels: { name: "Имя", email: "Эл. почта", message: "Сообщение", send: "Отправить" },
-          footer: "Спасибо за просмотр! — TURA",
+          footer: "Спасибо за просмотр! — ALPHA FACADE",
           projects: [
             { id: 'p1', title: "ALPHA", sub: "Личный бренд", color: "linear-gradient(135deg,#1f1f1f,#161616)", detail: "Лендинг, смелая типографика и минимальный UI." },
             { id: 'p2', title: "Keet Cafe", sub: "Сайт кафе", color: "linear-gradient(135deg,#232323,#141414)", detail: "Страницы меню, бронирование и адаптивный дизайн." },
-            { id: 'p3', title: "Портфолио Апп", sub: "Интерактивный UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "Интерактивная сетка проектов с анимациями." }
+            { id: 'p3', title: "Портфолио Апп", sub: "Интерактивный UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "Интерактивная сетка проектов с анимациями." },
+            { id: 'p4', title: "Проект 4", sub: "Новый дизайн", color: "linear-gradient(135deg,#252525,#121212)", detail: "Демо проект с галереей." },
+            { id: 'p5', title: "Проект 5", sub: "Новый дизайн", color: "linear-gradient(135deg,#282828,#131313)", detail: "Демо проект с галереей." },
+            { id: 'p6', title: "Проект 6", sub: "Новый дизайн", color: "linear-gradient(135deg,#292929,#141414)", detail: "Демо проект с галереей." },
+            { id: 'p7', title: "Проект 7", sub: "Новый дизайн", color: "linear-gradient(135deg,#2a2a2a,#151515)", detail: "Демо проект с галереей." },
+            { id: 'p8', title: "Проект 8", sub: "Новый дизайн", color: "linear-gradient(135deg,#2b2b2b,#161616)", detail: "Демо проект с галереей." },
+            { id: 'p9', title: "Проект 9", sub: "Новый дизайн", color: "linear-gradient(135deg,#2c2c2c,#171717)", detail: "Демо проект с галереей." }
           ]
         }
       };
@@ -611,7 +730,7 @@
         // footer
         document.getElementById('footerText').textContent = t.footer;
 
-        // render projects
+        // render projects (will use t.projects)
         renderProjects();
       }
 
@@ -636,6 +755,67 @@
         for(const c of children) if(c !== null && c !== undefined) el.appendChild(typeof c==='string'? document.createTextNode(c): c);
         return el;
       }
+
+      // modal references & logic
+      const modal = document.getElementById('galleryModal');
+      const modalImage = modal.querySelector('.modal-image');
+      const modalCaption = modal.querySelector('.modal-caption');
+      const modalPrev = modal.querySelector('.modal-prev');
+      const modalNext = modal.querySelector('.modal-next');
+      const modalClose = modal.querySelector('.modal-close');
+
+      let modalImages = ["images/first.jpg", "images/second.jpeg", "images/third.jpg"];
+      let modalIndex = 0;
+
+      function updateModalCaption(){
+        modalCaption.textContent = `${modalIndex + 1} / ${modalImages.length}`;
+      }
+      function openModal(images = modalImages, startIndex = 0){
+        modalImages = images;
+        modalIndex = startIndex;
+        modalImage.src = modalImages[modalIndex];
+        updateModalCaption();
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+        // trap focus roughly
+        modal.querySelector('.modal-content').focus();
+        // prevent background scroll
+        document.documentElement.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden';
+      }
+      function closeModal(){
+        modal.classList.remove('open');
+        modal.setAttribute('aria-hidden', 'true');
+        document.documentElement.style.overflow = '';
+        document.body.style.overflow = '';
+      }
+      modalPrev.addEventListener('click', ()=> {
+        modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+        modalImage.src = modalImages[modalIndex];
+        updateModalCaption();
+      });
+      modalNext.addEventListener('click', ()=> {
+        modalIndex = (modalIndex + 1) % modalImages.length;
+        modalImage.src = modalImages[modalIndex];
+        updateModalCaption();
+      });
+      modalClose.addEventListener('click', closeModal);
+
+      // click outside content closes modal
+      modal.addEventListener('click', (e) => {
+        if(e.target === modal) closeModal();
+      });
+
+      // keyboard navigation for modal + escape to close active project
+      window.addEventListener('keydown', (e) => {
+        if(modal.classList.contains('open')){
+          if(e.key === 'ArrowLeft') modalPrev.click();
+          else if(e.key === 'ArrowRight') modalNext.click();
+          else if(e.key === 'Escape') { closeModal(); clearActiveProject(); }
+        } else {
+          if(e.key === 'Escape') clearActiveProject();
+        }
+      });
 
       function renderProjects(){
         projectsGrid.innerHTML = '';
@@ -681,7 +861,7 @@
           });
 
           card.addEventListener('click', (e) => {
-            // toggle active project
+            // toggle active project (same visual behavior as before)
             const already = card.classList.contains('active');
             clearActiveProject();
             if(!already){
@@ -691,6 +871,9 @@
               card.style.zIndex = 20;
               // smooth scroll to center on small screens
               setTimeout(()=> card.scrollIntoView({behavior:'smooth', block:'center'}), 140);
+              // open modal gallery for this project
+              // all projects use the same three images as specified
+              openModal(["images/first.jpg","images/second.jpeg","images/third.jpg"], 0);
             } else {
               state.activeProject = null;
             }
@@ -792,7 +975,7 @@
       // apply initial translations and render projects
       applyTranslations();
 
-      // small keyboard support: Esc clears project active
+      // small keyboard support: Esc clears project active (handled above too)
       window.addEventListener('keydown', (e)=>{
         if(e.key === 'Escape') clearActiveProject();
       });

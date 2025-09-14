@@ -1,15 +1,24 @@
 {
-  "home": "Home",
-  "projects": "Projects",
-  "contact": "Contact",
-  "heroTitle": "ALPHA FACADE",
+  "nav": { "home": "Home", "projects": "Projects", "contact": "Contact" },
+  "homeSub": "A JUNIOR WEB-DESIGNER — LANDING PAGE",
   "projectsTitle": "Projects",
+  "projectsDesc": "Hover and click to bring a project forward. Scalable tiles with animations.",
   "contactTitle": "Contact",
-  "labels": {
-    "name": "Your name",
-    "email": "Email",
-    "message": "Message",
-    "send": "Send Message"
-  },
-  "footer": "Thanks for watching! — TURA"
+  "contactDesc": "If you'd like to get in touch — send me a message. This demo performs front-end validation only.",
+  "address": "Tbilisi, Georgia",
+  "phone": "+995 123 45 678",
+  "email": "hello@alpha.dev",
+  "labels": { "name": "Your name", "email": "Email", "message": "Message", "send": "Send Message" },
+  "footer": "Thanks for watching! — ALPHA FACADE",
+  "projects": [
+    { "id": "p1", "title": "ALPHA", "sub": "Personal branding", "image": "images/project1.jpg", "detail": "Landing page, bold typography and minimal UI.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p2", "title": "Keet Cafe", "sub": "Cafe website", "image": "images/project2.jpg", "detail": "Menu pages, booking UI and responsive layout.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p3", "title": "Portfolio App", "sub": "Interactive UI", "image": "images/project3.jpg", "detail": "Interactive project grid with animations.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p4", "title": "Horizon", "sub": "E-commerce platform", "image": "images/project4.jpg", "detail": "A modern and sleek e-commerce website with a focus on user experience.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p5", "title": "Nexus", "sub": "Creative agency", "image": "images/project5.jpg", "detail": "A dynamic landing page for a creative agency showcasing their latest work.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p6", "title": "Aura", "sub": "Wellness app", "image": "images/project6.jpg", "detail": "A mobile-first design for a wellness application, focusing on mindfulness and health tracking.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p7", "title": "Cortex", "sub": "Tech blog", "image": "images/project7.jpg", "detail": "A clean and minimalist blog design for technology and science-related articles.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p8", "title": "Zenith", "sub": "Photography portfolio", "image": "images/project8.jpg", "detail": "An elegant portfolio website designed to showcase high-quality photography.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] },
+    { "id": "p9", "title": "Fusion", "sub": "Food delivery service", "image": "images/project9.jpg", "detail": "A vibrant and intuitive UI for a food delivery platform, designed for quick and easy ordering.", "gallery": ["images/first.jpg", "images/second.jpeg", "images/third.jpg"] }
+  ]
 }
