@@ -1,1010 +1,1358 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<title>ALPHA FACADE</title>
-<style>
-  /* ---------- Base & variables ---------- */
-  :root{
-    --bg: #1a1a1a;
-    --panel: #111214;
-    --muted: #8b8b8b;
-    --accent: #fff;
-    --glass: rgba(255,255,255,0.04);
-    --card-shadow: 0 20px 50px rgba(0,0,0,0.7);
-    --duration: 380ms;
-    --ease: cubic-bezier(.2,.9,.3,1);
-    --max-width: 1100px;
-    --radius: 8px;
-  }
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>ALPHA FACADE</title>
+    <style>
+        /* ---------- Base & variables ---------- */
+        :root {
+            --bg: #1a1a1a;
+            --panel: #111214;
+            --muted: #8b8b8b;
+            --accent: #fff;
+            --glass: rgba(255, 255, 255, 0.04);
+            --card-shadow: 0 20px 50px rgba(0, 0, 0, 0.7);
+            --duration: 380ms;
+            --ease: cubic-bezier(.2, .9, .3, 1);
+            --max-width: 1100px;
+            --radius: 8px;
+        }
 
-  *{box-sizing:border-box}
-  html,body{height:100%}
-  body{
-    margin:0;
-    font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-    background: linear-gradient(180deg,#161616 0%, #1e1e1e 100%);
-    color:var(--accent);
-    -webkit-font-smoothing:antialiased;
-    -moz-osx-font-smoothing:grayscale;
-    line-height:1.4;
-  }
+        * {
+            box-sizing: border-box
+        }
 
-  /* ---------- Layout ---------- */
-  .wrap{
-    min-height:100vh;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    padding:48px 20px;
-    gap:32px;
-  }
+        html, body {
+            height: 100%
+        }
 
-  header{
-    width:100%;
-    max-width:var(--max-width);
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:16px;
-  }
-  .brand{
-    letter-spacing:4px;
-    text-transform:uppercase;
-    font-weight:700;
-    font-size:18px;
-    text-decoration: none;
-    color: inherit;
-    cursor: pointer;
-}
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background: linear-gradient(180deg, #161616 0%, #1e1e1e 100%);
+            color: var(--accent);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            line-height: 1.4;
+        }
 
-  nav{
-    display:flex;
-    gap:22px;
-    align-items:center;
-  }
-  nav a{
-    color:var(--muted);
-    text-decoration:none;
-    font-weight:600;
-    letter-spacing:1px;
-    transition:color var(--duration) var(--ease), transform var(--duration) var(--ease);
-  }
-  nav a.active, nav a:hover{ color:var(--accent); transform: translateY(-2px); }
+        /* ---------- Layout ---------- */
+        .wrap {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 48px 20px;
+            gap: 32px;
+        }
 
-  .lang-switch{
-    display:flex;
-    gap:8px;
-    margin-left:12px;
-  }
-  .lang-btn{
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    padding:6px 8px;
-    color:var(--muted);
-    border-radius:6px;
-    cursor:pointer;
-    font-weight:600;
-    transition: all var(--duration) var(--ease);
-  }
-  .lang-btn.active, .lang-btn:hover{
-    color:var(--accent);
-    border-color:rgba(255,255,255,0.15);
-    transform:translateY(-2px);
-  }
+        header {
+            width: 100%;
+            max-width: var(--max-width);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+        }
 
-  /* burger for mobile */
-  .burger{
-    display:none;
-    background:transparent;
-    border:0;
-    width:44px;height:44px;border-radius:8px;
-    align-items:center;justify-content:center;
-    cursor:pointer;
-  }
-  .burger .bar{
-    width:22px;height:2px;background:var(--accent);
-    position:relative;
-  }
-  .burger .bar::before, .burger .bar::after{
-    content:"";position:absolute;left:0;width:22px;height:2px;background:var(--accent);
-    transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
-  }
-  .burger .bar::before{ top:-7px; }
-  .burger .bar::after{ top:7px; }
+        .brand {
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+            color: inherit;
+            cursor: pointer;
+        }
 
-  /* ---------- Pages container ---------- */
-  main{
-    width:100%;
-    max-width:var(--max-width);
-    display:flex;
-    gap:36px;
-    align-items:flex-start;
-    justify-content:center;
-    position:relative;
-  }
+        nav {
+            display: flex;
+            gap: 22px;
+            align-items: center;
+        }
 
-  .page{
-    width:100%;
-    display:none;
-    animation: fadeIn 420ms var(--ease) both;
-  }
-  .page.active{ display:block; }
+        nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            letter-spacing: 1px;
+            transition: color var(--duration) var(--ease), transform var(--duration) var(--ease);
+        }
 
-  /* ---------- Home panel ---------- */
-  .hero{
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-    border-radius:10px;
-    height: 80vh;
-    /*padding:206px;*/
-    box-shadow: var(--card-shadow);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    text-align: center;
-    animation: fadeIn 1.5s ease-in-out;
-  }
-  .hero h1{
-    font-size:72px;
-    margin:0;
-    letter-spacing:6px;
-    text-transform:uppercase;
-    text-align:center;
-    color:var(--accent);
-    text-shadow: 0 6px 30px rgba(0,0,0,0.7);
-  }
-  .hero .sub{
-    position:absolute;
-    bottom:18px;
-    left:26px;
-    color:var(--muted);
-    font-size:12px;
-    letter-spacing:2px;
-  }
+        nav a.active, nav a:hover {
+            color: var(--accent);
+            transform: translateY(-2px);
+        }
 
-  /* ---------- Projects page ---------- */
-  .projects-grid{
-    margin-top:12px;
-    display:grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap:28px;
-  }
-  .project-card{
-    position:relative;
-    min-height:220px;
-    border-radius:10px;
-    overflow:visible;
-    cursor:pointer;
-    transform-origin:center;
-    transition: transform 420ms var(--ease), box-shadow 420ms var(--ease), filter 420ms var(--ease);
-    will-change:transform;
-  }
-  .project-inner{
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.1));
-    border-radius:10px;
-    height:100%;
-    padding:18px;
-    box-shadow: 0 8px 30px rgba(0,0,0,0.6);
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
-    justify-content:flex-end;
-  }
-  .project-surface{
-    position:absolute;
-    top:0;left:0;right:0;bottom:0;
-    background-size:cover;
-    background-position:center;
-    filter:grayscale(60%) contrast(85%) brightness(.35);
-    transition: transform 420ms var(--ease), filter 420ms var(--ease);
-  }
-  .project-overlay{
-    position:relative;
-    z-index:3;
-    color:var(--accent);
-    padding:10px 8px;
-    backdrop-filter: blur(3px);
-  }
-  .project-title{
-    font-size:22px;
-    font-weight:700;
-    letter-spacing:2px;
-    margin:0 0 6px 0;
-  }
-  .project-sub{
-    color:var(--muted);
-    font-size:12px;
-  }
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            margin-left: 12px;
+        }
 
-  /* hover & active behavior */
-  .project-card:hover{ transform: translateY(-12px) scale(1.03); z-index:5; }
-  .project-card:hover .project-surface{ transform:scale(1.06); filter:grayscale(0%) brightness(.45); }
-  .project-card.active{
-    transform: translateY(-24px) scale(1.12);
-    z-index:20;
-    box-shadow: 0 50px 120px rgba(0,0,0,0.8);
-  }
-  .project-card.active .project-surface{
-    transform: scale(1.12) translateY(-6px);
-    filter:grayscale(0%) brightness(.5);
-  }
+        .lang-btn {
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            padding: 6px 8px;
+            color: var(--muted);
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all var(--duration) var(--ease);
+        }
 
-  .project-details{
-    margin-top:14px;
-    color:var(--muted);
-    font-size:13px;
-    opacity:0;
-    transform:translateY(8px);
-    transition: opacity 360ms var(--ease), transform 360ms var(--ease);
-  }
-  .project-card.active .project-details{
-    opacity:1; transform:translateY(0);
-  }
+        .lang-btn.active, .lang-btn:hover {
+            color: var(--accent);
+            border-color: rgba(255, 255, 255, 0.15);
+            transform: translateY(-2px);
+        }
 
-  /* CTA */
-  .view-project{
-    margin-top:10px;
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    color:var(--muted);
-    padding:10px 14px;
-    border-radius:6px;
-    font-weight:700;
-    cursor:pointer;
-    transition: all var(--duration) var(--ease);
-  }
-  .view-project:hover{ color:var(--accent); border-color:rgba(255,255,255,0.2); transform:translateY(-3px); }
+        /* burger for mobile */
+        .burger {
+            display: none;
+            background: transparent;
+            border: 0;
+            width: 44px;
+            height: 44px;
+            border-radius: 8px;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
 
-  /* ---------- Contact page ---------- */
-  .contact-wrap{
-    display:grid;
-    grid-template-columns: 1fr 380px;
-    gap:28px;
-    align-items:start;
-  }
-  .contact-left{
-    padding:76px;
-    background:var(--panel);
-    border-radius:10px;
-    box-shadow: var(--card-shadow);
-    color:var(--muted);
-  }
-  .contact-left h3{ color:var(--accent); margin-top:0; }
-  .contact-right{
-    padding:26px;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
-    border-radius:10px;
-    box-shadow: var(--card-shadow);
-  }
-  .form-row{ display:flex; gap:10px; margin-bottom:12px; }
-  label{ font-size:13px; color:var(--muted); margin-bottom:6px; display:block; }
-  input[type="text"], input[type="email"], textarea{
-    width:100%;
-    padding:12px;
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    color:var(--accent);
-    border-radius:8px;
-    outline:none;
-    transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
-  }
-  input:focus, textarea:focus{ border-color:rgba(255,255,255,0.18); box-shadow:0 6px 24px rgba(0,0,0,0.6); }
-  textarea{ min-height:140px; resize:vertical; }
+        .burger .bar {
+            width: 22px;
+            height: 2px;
+            background: var(--accent);
+            position: relative;
+        }
 
-  .send-btn{
-    margin-top:6px;
-    padding:12px 16px;
-    background:transparent;
-    color:var(--accent);
-    border-radius:8px;
-    border:1px solid rgba(255,255,255,0.08);
-    cursor:pointer;
-    font-weight:700;
-    transition: transform var(--duration) var(--ease), background var(--duration) var(--ease);
-  }
-  .send-btn:hover{ transform:translateY(-3px); background:rgba(255,255,255,0.02); }
+        .burger .bar::before, .burger .bar::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            width: 22px;
+            height: 2px;
+            background: var(--accent);
+            transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+        }
 
-  /* ---------- Footer "thanks" ---------- */
-  footer{
-    width:100%;
-    max-width:var(--max-width);
-    text-align:center;
-    color:var(--muted);
-    padding:36px 0 12px;
-    font-size:13px;
-  }
+        .burger .bar::before {
+            top: -7px;
+        }
 
-  /* ---------- Social icons bottom-left ---------- */
-  .social{
-    position:fixed;
-    left:16px;
-    bottom:18px;
-    display:flex;
-    flex-direction:column;
-    gap:12px;
-    z-index:60;
-  }
-  .social a{
-    width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;
-    background:var(--panel);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
-    border:1px solid rgba(255,255,255,0.03);
-    transition: transform var(--duration) var(--ease), background var(--duration) var(--ease), color var(--duration) var(--ease);
-    color:var(--muted);
-    text-decoration:none;
-  }
-  .social a:hover{
-    transform:translateY(-8px) rotate(-3deg);
-    color:var(--accent);
-    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
-  }
-  .social a svg{ width:20px;height:20px;display:block; }
+        .burger .bar::after {
+            top: 7px;
+        }
 
-  /* ---------- Responsive ---------- */
-  @media (max-width:980px){
-    .projects-grid{ grid-template-columns: repeat(2, 1fr); }
-    .contact-wrap{ grid-template-columns: 1fr; }
-  }
-  @media (max-width:680px){
-    header{ padding: 0 8px; }
-    nav{ display:none; }
-    .burger{ display:flex; }
-    main{ padding:0 6px; }
-    .projects-grid{ grid-template-columns: 1fr; gap:20px; }
-    .hero h1{ font-size:44px; }
-    .brand{ font-size:16px }
-    .social{ left:8px; bottom:12px; gap:8px }
-  }
+        /* ---------- Pages container ---------- */
+        main {
+            width: 100%;
+            max-width: var(--max-width);
+            display: flex;
+            gap: 36px;
+            align-items: flex-start;
+            justify-content: center;
+            position: relative;
+        }
 
-  /* ---------- small helpers & animation ---------- */
-  @keyframes fadeIn{ from{opacity:0; transform:translateY(8px)} to{opacity:1; transform:translateY(0)}}
-  .muted{ color:var(--muted); font-size:13px; }
-  .center{ text-align:center }
-  .small { font-size:12px; color:var(--muted) }
+        .page {
+            width: 100%;
+            display: none;
+            animation: fadeIn 420ms var(--ease) both;
+        }
 
-  /* ---------- Modal gallery styles (minimal & self-contained) ---------- */
-  .modal-overlay{
-    position:fixed;
-    inset:0;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    background:rgba(0,0,0,0.85);
-    z-index:120;
-    opacity:0;
-    pointer-events:none;
-    transition: opacity 240ms ease;
-  }
-  .modal-overlay.open{
-    opacity:1;
-    pointer-events:auto;
-  }
-  .modal-content{
-    max-width:920px;
-    width:92%;
-    background:transparent;
-    outline:none;
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    gap:12px;
-  }
-  .modal-view{
-    width:100%;
-    background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.06));
-    padding:18px;
-    border-radius:10px;
-    box-shadow:var(--card-shadow);
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-  }
-  .modal-image{
-    max-height:70vh;
-    width:auto;
-    max-width:100%;
-    border-radius:8px;
-    display:block;
-  }
-  .modal-caption{
-    color:var(--muted);
-    font-size:13px;
-    text-align:center;
-  }
-  .modal-controls{
-    position:absolute;
-    left:12px;
-    top:50%;
-    transform:translateY(-50%);
-    display:flex;
-    gap:8px;
-  }
-  .modal-controls .btn{
-    background:rgba(0,0,0,0.4);
-    border:1px solid rgba(255,255,255,0.06);
-    color:var(--accent);
-    padding:8px 10px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:700;
-  }
-  .modal-close{
-    position:absolute;
-    right:12px;
-    top:12px;
-    background:transparent;
-    border:1px solid rgba(255,255,255,0.06);
-    color:var(--muted);
-    padding:8px 10px;
-    border-radius:8px;
-    cursor:pointer;
-    font-weight:700;
-  }
-  @media (max-width:480px){
-    .modal-controls { left:6px; }
-    .modal-close { right:6px; top:6px; padding:6px 8px; }
-  }
-</style>
+        .page.active {
+            display: block;
+        }
+
+        /* ---------- Home panel ---------- */
+        .hero {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+            border-radius: 10px;
+            height: 80vh;
+            /*padding:206px;*/
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        .hero h1 {
+            font-size: 72px;
+            margin: 0;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            text-align: center;
+            color: var(--accent);
+            text-shadow: 0 6px 30px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero .sub {
+            position: absolute;
+            bottom: 18px;
+            left: 26px;
+            color: var(--muted);
+            font-size: 12px;
+            letter-spacing: 2px;
+        }
+
+        /* ---------- Projects page ---------- */
+        .projects-grid {
+            margin-top: 12px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+        }
+
+        .project-card {
+            position: relative;
+            min-height: 220px;
+            border-radius: 10px;
+            overflow: visible;
+            cursor: pointer;
+            transform-origin: center;
+            transition: transform 420ms var(--ease), box-shadow 420ms var(--ease), filter 420ms var(--ease);
+            will-change: transform;
+        }
+
+        .project-inner {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.1));
+            border-radius: 10px;
+            height: 100%;
+            padding: 18px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
+
+        .project-surface {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(60%) contrast(85%) brightness(.35);
+            transition: transform 420ms var(--ease), filter 420ms var(--ease);
+        }
+
+        .project-overlay {
+            position: relative;
+            z-index: 3;
+            color: var(--accent);
+            padding: 10px 8px;
+            backdrop-filter: blur(3px);
+        }
+
+        .project-title {
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin: 0 0 6px 0;
+        }
+
+        .project-sub {
+            color: var(--muted);
+            font-size: 12px;
+        }
+
+        /* hover & active behavior */
+        .project-card:hover {
+            transform: translateY(-12px) scale(1.03);
+            z-index: 5;
+        }
+
+        .project-card:hover .project-surface {
+            transform: scale(1.06);
+            filter: grayscale(0%) brightness(.45);
+        }
+
+        .project-card.active {
+            transform: translateY(-24px) scale(1.12);
+            z-index: 20;
+            box-shadow: 0 50px 120px rgba(0, 0, 0, 0.8);
+        }
+
+        .project-card.active .project-surface {
+            transform: scale(1.12) translateY(-6px);
+            filter: grayscale(0%) brightness(.5);
+        }
+
+        .project-details {
+            margin-top: 14px;
+            color: var(--muted);
+            font-size: 13px;
+            opacity: 0;
+            transform: translateY(8px);
+            transition: opacity 360ms var(--ease), transform 360ms var(--ease);
+        }
+
+        .project-card.active .project-details {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* CTA */
+        .view-project {
+            margin-top: 10px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+            padding: 10px 14px;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all var(--duration) var(--ease);
+        }
+
+        .view-project:hover {
+            color: var(--accent);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        /* ---------- Contact page ---------- */
+        .contact-wrap {
+            display: grid;
+            grid-template-columns: 1fr 380px;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .contact-left {
+            padding: 76px;
+            background: var(--panel);
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            color: var(--muted);
+        }
+
+        .contact-left h3 {
+            color: var(--accent);
+            margin-top: 0;
+        }
+
+        .contact-right {
+            padding: 26px;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        label {
+            font-size: 13px;
+            color: var(--muted);
+            margin-bottom: 6px;
+            display: block;
+        }
+
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 12px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--accent);
+            border-radius: 8px;
+            outline: none;
+            transition: border-color var(--duration) var(--ease), box-shadow var(--duration) var(--ease);
+        }
+
+        input:focus, textarea:focus {
+            border-color: rgba(255, 255, 255, 0.18);
+            box-shadow: 0 6px 24px rgba(0, 0, 0, 0.6);
+        }
+
+        textarea {
+            min-height: 140px;
+            resize: vertical;
+        }
+
+        .send-btn {
+            margin-top: 6px;
+            padding: 12px 16px;
+            background: transparent;
+            color: var(--accent);
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            cursor: pointer;
+            font-weight: 700;
+            transition: transform var(--duration) var(--ease), background var(--duration) var(--ease);
+        }
+
+        .send-btn:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.02);
+        }
+
+        /* ---------- Footer "thanks" ---------- */
+        footer {
+            width: 100%;
+            max-width: var(--max-width);
+            text-align: center;
+            color: var(--muted);
+            padding: 36px 0 12px;
+            font-size: 13px;
+        }
+
+        /* ---------- Social icons bottom-left ---------- */
+        .social {
+            position: fixed;
+            left: 16px;
+            bottom: 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 60;
+        }
+
+        .social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--panel);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: transform var(--duration) var(--ease), background var(--duration) var(--ease), color var(--duration) var(--ease);
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        .social a:hover {
+            transform: translateY(-8px) rotate(-3deg);
+            color: var(--accent);
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
+        }
+
+        .social a svg {
+            width: 20px;
+            height: 20px;
+            display: block;
+        }
+
+        /* ---------- Responsive ---------- */
+        @media (max-width: 980px) {
+            .projects-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .contact-wrap {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 680px) {
+            header {
+                padding: 0 8px;
+            }
+
+            nav {
+                display: none;
+            }
+
+            .burger {
+                display: flex;
+            }
+
+            main {
+                padding: 0 6px;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hero h1 {
+                font-size: 44px;
+            }
+
+            .brand {
+                font-size: 16px
+            }
+
+            .social {
+                left: 8px;
+                bottom: 12px;
+                gap: 8px
+            }
+        }
+
+        /* ---------- small helpers & animation ---------- */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(8px)
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .muted {
+            color: var(--muted);
+            font-size: 13px;
+        }
+
+        .center {
+            text-align: center
+        }
+
+        .small {
+            font-size: 12px;
+            color: var(--muted)
+        }
+
+        /* ---------- Modal gallery styles (minimal & self-contained) ---------- */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(0, 0, 0, 0.85);
+            z-index: 120;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 240ms ease;
+        }
+
+        .modal-overlay.open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .modal-content {
+            max-width: 920px;
+            width: 92%;
+            background: transparent;
+            outline: none;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .modal-view {
+            width: 100%;
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(0, 0, 0, 0.06));
+            padding: 18px;
+            border-radius: 10px;
+            box-shadow: var(--card-shadow);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .modal-image {
+            max-height: 70vh;
+            width: auto;
+            max-width: 100%;
+            border-radius: 8px;
+            display: block;
+        }
+
+        .modal-caption {
+            color: var(--muted);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .modal-controls {
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            gap: 8px;
+        }
+
+        .modal-controls .btn {
+            background: rgba(0, 0, 0, 0.4);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--accent);
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        .modal-close {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            background: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            color: var(--muted);
+            padding: 8px 10px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 700;
+        }
+
+        @media (max-width: 480px) {
+            .modal-controls {
+                left: 6px;
+            }
+
+            .modal-close {
+                right: 6px;
+                top: 6px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-  <div class="wrap" id="app">
+<div class="wrap" id="app">
     <header>
-      <div style="display:flex;align-items:center;gap:14px;">
-        <a href="index.html" class="brand">ALPHA FACADE</a>
-        <div class="small muted">A junior web-designer</div>
-      </div>
-
-      <nav id="mainNav" aria-label="Main navigation">
-        <a href="#home" data-page="home" class="nav-link active">Home</a>
-        <a href="#projects" data-page="projects" class="nav-link">Projects</a>
-        <a href="#contact" data-page="contact" class="nav-link">Contact</a>
-
-        <div class="lang-switch" role="tablist" aria-label="Language switcher">
-          <button class="lang-btn active" data-lang="en">EN</button>
-          <button class="lang-btn" data-lang="ka">KA</button>
-          <button class="lang-btn" data-lang="ru">RU</button>
+        <div style="display:flex;align-items:center;gap:14px;">
+            <a href="index.html" class="brand">ALPHA FACADE</a>
+            <div class="small muted">A junior web-designer</div>
         </div>
-      </nav>
 
-      <button class="burger" id="burger" aria-label="Open menu">
-        <span class="bar"></span>
-      </button>
+        <nav id="mainNav" aria-label="Main navigation">
+            <a href="#home" data-page="home" class="nav-link active">Home</a>
+            <a href="#projects" data-page="projects" class="nav-link">Projects</a>
+            <a href="#contact" data-page="contact" class="nav-link">Contact</a>
+
+            <div class="lang-switch" role="tablist" aria-label="Language switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ka">KA</button>
+                <button class="lang-btn" data-lang="ru">RU</button>
+            </div>
+        </nav>
+
+        <button class="burger" id="burger" aria-label="Open menu">
+            <span class="bar"></span>
+        </button>
     </header>
 
     <main>
-      <!-- Home -->
-      <section id="home" class="page active" data-page="home" role="region" aria-labelledby="home-title">
-        <div class="hero" role="banner">
-          <h1 id="home-title">ALPHA FACADE</h1>
-          <div class="sub" id="home-sub">A JUNIOR WEB-DESIGNER — LANDING PAGE</div>
-        </div>
-      </section>
+        <!-- Home -->
+        <section id="home" class="page active" data-page="home" role="region" aria-labelledby="home-title">
+            <div class="hero" role="banner">
+                <h1 id="home-title">ALPHA FACADE</h1>
+                <div class="sub" id="home-sub">A JUNIOR WEB-DESIGNER — LANDING PAGE</div>
+            </div>
+        </section>
 
-      <!-- Projects -->
-      <section id="projects" class="page" data-page="projects" role="region" aria-labelledby="projects-title">
-        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
-          <div>
-            <h2 id="projects-title" style="margin:0">Projects</h2>
-            <div class="small muted" id="projects-desc">Hover and click to bring a project forward. Scalable tiles with animations.</div>
-          </div>
-        </div>
+        <!-- Projects -->
+        <section id="projects" class="page" data-page="projects" role="region" aria-labelledby="projects-title">
+            <div style="display:flex; align-items:center; justify-content:space-between; gap:12px;">
+                <div>
+                    <h2 id="projects-title" style="margin:0">Projects</h2>
+                    <div class="small muted" id="projects-desc">Hover and click to bring a project forward. Scalable
+                        tiles with animations.
+                    </div>
+                </div>
+            </div>
 
-        <div class="projects-grid" id="projectsGrid" aria-live="polite" style="margin-top:18px;">
-          <!-- Project cards will be filled by JS -->
-        </div>
-      </section>
+            <div class="projects-grid" id="projectsGrid" aria-live="polite" style="margin-top:18px;">
+                <!-- Project cards will be filled by JS -->
+            </div>
+        </section>
 
-      <!-- Contact -->
-      <section id="contact" class="page" data-page="contact" role="region" aria-labelledby="contact-title">
-        <div class="contact-wrap">
-          <div class="contact-left">
-            <h3 id="contact-title">Contact</h3>
-            <p id="contact-desc" class="muted">If you'd like to get in touch — send me a message. This demo form performs front-end validation only.</p>
-            <p><strong>Address</strong><br><span class="small muted" id="contact-address">Tbilisi, Georgia</span></p>
-            <p><strong>Phone</strong><br><span class="small muted" id="contact-phone">+995 123 45 678</span></p>
-            <p><strong>Email</strong><br><span class="small muted" id="contact-email">hello@alpha.dev</span></p>
-          </div>
+        <!-- Contact -->
+        <section id="contact" class="page" data-page="contact" role="region" aria-labelledby="contact-title">
+            <div class="contact-wrap">
+                <div class="contact-left">
+                    <h3 id="contact-title">Contact</h3>
+                    <p id="contact-desc" class="muted">If you'd like to get in touch — send me a message. This demo form
+                        performs front-end validation only.</p>
+                    <p><strong>Address</strong><br><span class="small muted"
+                                                         id="contact-address">Tbilisi, Georgia</span></p>
+                    <p><strong>Phone</strong><br><span class="small muted" id="contact-phone">+995 123 45 678</span></p>
+                    <p><strong>Email</strong><br><span class="small muted" id="contact-email">hello@alpha.dev</span></p>
+                </div>
 
-          <div class="contact-right">
-            <form id="contactForm" novalidate>
-              <div>
-                <label for="name" id="label-name">Your name</label>
-                <input type="text" id="name" name="name" placeholder="Name" required />
-              </div>
-              <div style="margin-top:10px;">
-                <label for="email" id="label-email">Email</label>
-                <input type="email" id="email" name="email" placeholder="you@example.com" required />
-              </div>
-              <div style="margin-top:10px;">
-                <label for="message" id="label-message">Message</label>
-                <textarea id="message" name="message" placeholder="Say hi..." required></textarea>
-              </div>
-              <div style="display:flex;justify-content:flex-end">
-                <button class="send-btn" type="submit" id="sendBtn">Send Message</button>
-              </div>
-              <div id="formMsg" class="small muted" style="margin-top:10px;"></div>
-            </form>
-          </div>
-        </div>
-      </section>
+                <div class="contact-right">
+                    <form id="contactForm" novalidate>
+                        <div>
+                            <label for="name" id="label-name">Your name</label>
+                            <input type="text" id="name" name="name" placeholder="Name" required/>
+                        </div>
+                        <div style="margin-top:10px;">
+                            <label for="email" id="label-email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="you@example.com" required/>
+                        </div>
+                        <div style="margin-top:10px;">
+                            <label for="message" id="label-message">Message</label>
+                            <textarea id="message" name="message" placeholder="Say hi..." required></textarea>
+                        </div>
+                        <div style="display:flex;justify-content:flex-end">
+                            <button class="send-btn" type="submit" id="sendBtn">Send Message</button>
+                        </div>
+                        <div id="formMsg" class="small muted" style="margin-top:10px;"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
     </main>
 
     <footer>
-      <div id="footerText">Thanks for watching! — ALPHA FACADE</div>
+        <div id="footerText">Thanks for watching! — ALPHA FACADE</div>
     </footer>
 
     <!-- Social icons at bottom-left -->
     <div class="social">
-    <a href="#" title="Facebook" aria-label="Facebook">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 7.94 9.8v-6.93H7.1v-2.87h2.84V9.8c0-2.8 1.7-4.34 4.2-4.34 1.2 0 2.4.22 2.4.22v2.64h-1.35c-1.33 0-1.74.83-1.74 1.68v2.02h2.96l-.47 2.87h-2.5v6.93C18.56 20.87 22 16.84 22 12z"/></svg>
-    </a>
-    <a href="#" title="Instagram" aria-label="Instagram">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.75 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z"/></svg>
-    </a>
-    <a href="#" title="LinkedIn" aria-label="LinkedIn">
-      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.94 21H2.8V8.9h4.14V21zM4.86 7.38a2.4 2.4 0 1 1 0-4.8 2.4 2.4 0 0 1 0 4.8zM21.2 21h-4.14v-5.5c0-1.31-.03-3-1.83-3-1.84 0-2.12 1.44-2.12 2.9V21H8.98V8.9h3.98v1.62h.06c.55-1.03 1.9-2.12 3.9-2.12 4.17 0 4.92 2.75 4.92 6.32V21z"/></svg>
-    </a>
-  </div>
+        <a href="#" title="Facebook" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 7.94 9.8v-6.93H7.1v-2.87h2.84V9.8c0-2.8 1.7-4.34 4.2-4.34 1.2 0 2.4.22 2.4.22v2.64h-1.35c-1.33 0-1.74.83-1.74 1.68v2.02h2.96l-.47 2.87h-2.5v6.93C18.56 20.87 22 16.84 22 12z"/>
+            </svg>
+        </a>
+        <a href="#" title="Instagram" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5A4.25 4.25 0 0 0 20.5 16.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zm8.75 2.25a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5zM12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5z"/>
+            </svg>
+        </a>
+        <a href="#" title="LinkedIn" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.94 21H2.8V8.9h4.14V21zM4.86 7.38a2.4 2.4 0 1 1 0-4.8 2.4 2.4 0 0 1 0 4.8zM21.2 21h-4.14v-5.5c0-1.31-.03-3-1.83-3-1.84 0-2.12 1.44-2.12 2.9V21H8.98V8.9h3.98v1.62h.06c.55-1.03 1.9-2.12 3.9-2.12 4.17 0 4.92 2.75 4.92 6.32V21z"/>
+            </svg>
+        </a>
+    </div>
 
     <!-- Modal gallery -->
-    <div id="galleryModal" class="modal-overlay" aria-hidden="true" tabindex="-1" role="dialog" aria-label="Project images">
-      <div class="modal-content" role="document">
-        <div class="modal-view">
-          <div class="modal-controls" aria-hidden="false">
-            <button class="btn modal-prev" title="Previous (left arrow)">‹</button>
-          </div>
-          <img class="modal-image" src="" alt="Project image" />
-          <button class="modal-close" title="Close (Esc)">Close</button>
-          <div class="modal-controls" style="left:auto; right:12px; top:50%; transform:translateY(-50%);">
-            <button class="btn modal-next" title="Next (right arrow)">›</button>
-          </div>
+    <div id="galleryModal" class="modal-overlay" aria-hidden="true" tabindex="-1" role="dialog"
+         aria-label="Project images">
+        <div class="modal-content" role="document">
+            <div class="modal-view">
+                <div class="modal-controls" aria-hidden="false">
+                    <button class="btn modal-prev" title="Previous (left arrow)">‹</button>
+                </div>
+                <img class="modal-image" src="" alt="Project image"/>
+                <button class="modal-close" title="Close (Esc)">Close</button>
+                <div class="modal-controls" style="left:auto; right:12px; top:50%; transform:translateY(-50%);">
+                    <button class="btn modal-next" title="Next (right arrow)">›</button>
+                </div>
+            </div>
+            <div class="modal-caption" aria-live="polite"></div>
         </div>
-        <div class="modal-caption" aria-live="polite"></div>
-      </div>
     </div>
 
     <script>
-      /*******************************
-       * DATA & TRANSLATIONS
-       *******************************/
-      const translations = {
-        en: {
-          nav: { home: "Home", projects: "Projects", contact: "Contact" },
-          homeSub: "A JUNIOR WEB-DESIGNER — LANDING PAGE",
-          projectsTitle: "Projects",
-          projectsDesc: "Hover and click to bring a project forward. Scalable tiles with animations.",
-          contactTitle: "Contact",
-          contactDesc: "If you'd like to get in touch — send me a message. This demo performs front-end validation only.",
-          address: "Tbilisi, Georgia",
-          phone: "+995 123 45 678",
-          email: "hello@alpha.dev",
-          labels: { name: "Your name", email: "Email", message: "Message", send: "Send Message" },
-          footer: "Thanks for watching! — ALPHA FACADE",
-          projects: [
-            { id: 'p1', title: "ALPHA", sub: "Personal branding", color: "linear-gradient(135deg,#1f1f1f,#161616)", detail: "Landing page, bold typography and minimal UI." },
-            { id: 'p2', title: "Keet Cafe", sub: "Cafe website", color: "linear-gradient(135deg,#232323,#141414)", detail: "Menu pages, booking UI and responsive layout." },
-            { id: 'p3', title: "Portfolio App", sub: "Interactive UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "Interactive project grid with animations." },
-            { id: 'p4', title: "Project Four", sub: "New design", color: "linear-gradient(135deg,#252525,#121212)", detail: "Demo project with gallery." },
-            { id: 'p5', title: "Project Five", sub: "New design", color: "linear-gradient(135deg,#282828,#131313)", detail: "Demo project with gallery." },
-            { id: 'p6', title: "Project Six", sub: "New design", color: "linear-gradient(135deg,#292929,#141414)", detail: "Demo project with gallery." },
-            { id: 'p7', title: "Project Seven", sub: "New design", color: "linear-gradient(135deg,#2a2a2a,#151515)", detail: "Demo project with gallery." },
-            { id: 'p8', title: "Project Eight", sub: "New design", color: "linear-gradient(135deg,#2b2b2b,#161616)", detail: "Demo project with gallery." },
-            { id: 'p9', title: "Project Nine", sub: "New design", color: "linear-gradient(135deg,#2c2c2c,#171717)", detail: "Demo project with gallery." }
-          ]
-        },
-        ka: {
-          nav: { home: "მთავარი", projects: "პროექტები", contact: "კონტაქტი" },
-          homeSub: "ახალი ვებ-დიზაინერი — ლენდინგი",
-          projectsTitle: "პროექტები",
-          projectsDesc: "აჩვენე, მოინახულე და დააკლიკე — პროექტები გამოდის წინა პლანზე.",
-          contactTitle: "კონტაქტი",
-          contactDesc: "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება. დემო ვერსია—შეიძლება მხოლოდ ფორმის ვალიდაცია.",
-          address: "თბილისი, საქართველო",
-          phone: "+995 123 45 678",
-          email: "hello@alpha.dev",
-          labels: { name: "სახელი", email: "ელ.ფოსტა", message: "შეტყობინება", send: "გაგზავნა" },
-          footer: "გმადლობთ შემოწმებისთვის! — ALPHA FACADE",
-          projects: [
-            { id: 'p1', title: "ALPHA", sub: "პირადი ბრენდინგი", color: "linear-gradient(135deg,#1f1f1f,#161616)", detail: "ლენდინგი, თამამი ტაიპოგრაფია და მინიმალური UI." },
-            { id: 'p2', title: "Keet Cafe", sub: "კაფე ვებ", color: "linear-gradient(135deg,#232323,#141414)", detail: "მენიუ, ბრონირების UI და რეაქტიული დიზაინი." },
-            { id: 'p3', title: "პორტფოლიო აპი", sub: "ინტერაქტიული UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "ინტერაქტიული გრიდი და ანიმაციები." },
-            { id: 'p4', title: "პროექტი 4", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#252525,#121212)", detail: "დემო პროექტი გალერეით." },
-            { id: 'p5', title: "პროექტი 5", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#282828,#131313)", detail: "დემო პროექტი გალერეით." },
-            { id: 'p6', title: "პროექტი 6", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#292929,#141414)", detail: "დემო პროექტი გალერეით." },
-            { id: 'p7', title: "პროექტი 7", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#2a2a2a,#151515)", detail: "დემო პროექტი გალერეით." },
-            { id: 'p8', title: "პროექტი 8", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#2b2b2b,#161616)", detail: "დემო პროექტი გალერეით." },
-            { id: 'p9', title: "პროექტი 9", sub: "ახალი დიზაინი", color: "linear-gradient(135deg,#2c2c2c,#171717)", detail: "დემო პროექტი გალერეით." }
-          ]
-        },
-        ru: {
-          nav: { home: "Главная", projects: "Проекты", contact: "Контакты" },
-          homeSub: "Младший веб-дизайнер — лендинг",
-          projectsTitle: "Проекты",
-          projectsDesc: "Наведи и кликни — проект выйдет на передний план. Масштабируемые плитки с анимацией.",
-          contactTitle: "Контакт",
-          contactDesc: "Хотите связаться? Напишите сообщение. Демо — только валидация на стороне клиента.",
-          address: "Тбилиси, Грузия",
-          phone: "+995 123 45 678",
-          email: "hello@alpha.dev",
-          labels: { name: "Имя", email: "Эл. почта", message: "Сообщение", send: "Отправить" },
-          footer: "Спасибо за просмотр! — ALPHA FACADE",
-          projects: [
-            { id: 'p1', title: "ALPHA", sub: "Личный бренд", color: "linear-gradient(135deg,#1f1f1f,#161616)", detail: "Лендинг, смелая типографика и минимальный UI." },
-            { id: 'p2', title: "Keet Cafe", sub: "Сайт кафе", color: "linear-gradient(135deg,#232323,#141414)", detail: "Страницы меню, бронирование и адаптивный дизайн." },
-            { id: 'p3', title: "Портфолио Апп", sub: "Интерактивный UI", color: "linear-gradient(135deg,#2a2a2a,#121212)", detail: "Интерактивная сетка проектов с анимациями." },
-            { id: 'p4', title: "Проект 4", sub: "Новый дизайн", color: "linear-gradient(135deg,#252525,#121212)", detail: "Демо проект с галереей." },
-            { id: 'p5', title: "Проект 5", sub: "Новый дизайн", color: "linear-gradient(135deg,#282828,#131313)", detail: "Демо проект с галереей." },
-            { id: 'p6', title: "Проект 6", sub: "Новый дизайн", color: "linear-gradient(135deg,#292929,#141414)", detail: "Демо проект с галереей." },
-            { id: 'p7', title: "Проект 7", sub: "Новый дизайн", color: "linear-gradient(135deg,#2a2a2a,#151515)", detail: "Демо проект с галереей." },
-            { id: 'p8', title: "Проект 8", sub: "Новый дизайн", color: "linear-gradient(135deg,#2b2b2b,#161616)", detail: "Демо проект с галереей." },
-            { id: 'p9', title: "Проект 9", sub: "Новый дизайн", color: "linear-gradient(135deg,#2c2c2c,#171717)", detail: "Демо проект с галереей." }
-          ]
+        /*******************************
+         * DATA & TRANSLATIONS
+         *******************************/
+        const translations = {
+            en: {
+                nav: {home: "Home", projects: "Projects", contact: "Contact"},
+                homeSub: "A JUNIOR WEB-DESIGNER — LANDING PAGE",
+                projectsTitle: "Projects",
+                projectsDesc: "Hover and click to bring a project forward. Scalable tiles with animations.",
+                contactTitle: "Contact",
+                contactDesc: "If you'd like to get in touch — send me a message. This demo performs front-end validation only.",
+                address: "Tbilisi, Georgia",
+                phone: "+995 123 45 678",
+                email: "hello@alpha.dev",
+                labels: {name: "Your name", email: "Email", message: "Message", send: "Send Message"},
+                footer: "Thanks for watching! — ALPHA FACADE",
+                projects: [
+                    {
+                        id: 'p1',
+                        title: "ALPHA",
+                        sub: "Personal branding",
+                        color: "linear-gradient(135deg,#1f1f1f,#161616)",
+                        detail: "Landing page, bold typography and minimal UI."
+                    },
+                    {
+                        id: 'p2',
+                        title: "Keet Cafe",
+                        sub: "Cafe website",
+                        color: "linear-gradient(135deg,#232323,#141414)",
+                        detail: "Menu pages, booking UI and responsive layout."
+                    },
+                    {
+                        id: 'p3',
+                        title: "Portfolio App",
+                        sub: "Interactive UI",
+                        color: "linear-gradient(135deg,#2a2a2a,#121212)",
+                        detail: "Interactive project grid with animations."
+                    },
+                    {
+                        id: 'p4',
+                        title: "Project Four",
+                        sub: "New design",
+                        color: "linear-gradient(135deg,#252525,#121212)",
+                        detail: "Demo project with gallery."
+                    },
+                    {
+                        id: 'p5',
+                        title: "Project Five",
+                        sub: "New design",
+                        color: "linear-gradient(135deg,#282828,#131313)",
+                        detail: "Demo project with gallery."
+                    },
+                    {
+                        id: 'p6',
+                        title: "Project Six",
+                        sub: "New design",
+                        color: "linear-gradient(135deg,#292929,#141414)",
+                        detail: "Demo project with gallery."
+                    },
+                    {
+                        id: 'p7',
+                        title: "Project Seven",
+                        sub: "New design",
+                        color: "linear-gradient(135deg,#2a2a2a,#151515)",
+                        detail: "Demo project with gallery."
+                    },
+                    {
+                        id: 'p8',
+                        title: "Project Eight",
+                        sub: "New design",
+                        color: "linear-gradient(135deg,#2b2b2b,#161616)",
+                        detail: "Demo project with gallery."
+                    },
+                    {
+                        id: 'p9',
+                        title: "Project Nine",
+                        sub: "New design",
+                        color: "linear-gradient(135deg,#2c2c2c,#171717)",
+                        detail: "Demo project with gallery."
+                    }
+                ]
+            },
+            ka: {
+                nav: {home: "მთავარი", projects: "პროექტები", contact: "კონტაქტი"},
+                homeSub: "ახალი ვებ-დიზაინერი — ლენდინგი",
+                projectsTitle: "პროექტები",
+                projectsDesc: "აჩვენე, მოინახულე და დააკლიკე — პროექტები გამოდის წინა პლანზე.",
+                contactTitle: "კონტაქტი",
+                contactDesc: "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება. დემო ვერსია—შეიძლება მხოლოდ ფორმის ვალიდაცია.",
+                address: "თბილისი, საქართველო",
+                phone: "+995 123 45 678",
+                email: "hello@alpha.dev",
+                labels: {name: "სახელი", email: "ელ.ფოსტა", message: "შეტყობინება", send: "გაგზავნა"},
+                footer: "გმადლობთ შემოწმებისთვის! — ALPHA FACADE",
+                projects: [
+                    {
+                        id: 'p1',
+                        title: "ALPHA",
+                        sub: "პირადი ბრენდინგი",
+                        color: "linear-gradient(135deg,#1f1f1f,#161616)",
+                        detail: "ლენდინგი, თამამი ტაიპოგრაფია და მინიმალური UI."
+                    },
+                    {
+                        id: 'p2',
+                        title: "Keet Cafe",
+                        sub: "კაფე ვებ",
+                        color: "linear-gradient(135deg,#232323,#141414)",
+                        detail: "მენიუ, ბრონირების UI და რეაქტიული დიზაინი."
+                    },
+                    {
+                        id: 'p3',
+                        title: "პორტფოლიო აპი",
+                        sub: "ინტერაქტიული UI",
+                        color: "linear-gradient(135deg,#2a2a2a,#121212)",
+                        detail: "ინტერაქტიული გრიდი და ანიმაციები."
+                    },
+                    {
+                        id: 'p4',
+                        title: "პროექტი 4",
+                        sub: "ახალი დიზაინი",
+                        color: "linear-gradient(135deg,#252525,#121212)",
+                        detail: "დემო პროექტი გალერეით."
+                    },
+                    {
+                        id: 'p5',
+                        title: "პროექტი 5",
+                        sub: "ახალი დიზაინი",
+                        color: "linear-gradient(135deg,#282828,#131313)",
+                        detail: "დემო პროექტი გალერეით."
+                    },
+                    {
+                        id: 'p6',
+                        title: "პროექტი 6",
+                        sub: "ახალი დიზაინი",
+                        color: "linear-gradient(135deg,#292929,#141414)",
+                        detail: "დემო პროექტი გალერეით."
+                    },
+                    {
+                        id: 'p7',
+                        title: "პროექტი 7",
+                        sub: "ახალი დიზაინი",
+                        color: "linear-gradient(135deg,#2a2a2a,#151515)",
+                        detail: "დემო პროექტი გალერეით."
+                    },
+                    {
+                        id: 'p8',
+                        title: "პროექტი 8",
+                        sub: "ახალი დიზაინი",
+                        color: "linear-gradient(135deg,#2b2b2b,#161616)",
+                        detail: "დემო პროექტი გალერეით."
+                    },
+                    {
+                        id: 'p9',
+                        title: "პროექტი 9",
+                        sub: "ახალი დიზაინი",
+                        color: "linear-gradient(135deg,#2c2c2c,#171717)",
+                        detail: "დემო პროექტი გალერეით."
+                    }
+                ]
+            },
+            ru: {
+                nav: {home: "Главная", projects: "Проекты", contact: "Контакты"},
+                homeSub: "Младший веб-дизайнер — лендинг",
+                projectsTitle: "Проекты",
+                projectsDesc: "Наведи и кликни — проект выйдет на передний план. Масштабируемые плитки с анимацией.",
+                contactTitle: "Контакт",
+                contactDesc: "Хотите связаться? Напишите сообщение. Демо — только валидация на стороне клиента.",
+                address: "Тбилиси, Грузия",
+                phone: "+995 123 45 678",
+                email: "hello@alpha.dev",
+                labels: {name: "Имя", email: "Эл. почта", message: "Сообщение", send: "Отправить"},
+                footer: "Спасибо за просмотр! — ALPHA FACADE",
+                projects: [
+                    {
+                        id: 'p1',
+                        title: "ALPHA",
+                        sub: "Личный бренд",
+                        color: "linear-gradient(135deg,#1f1f1f,#161616)",
+                        detail: "Лендинг, смелая типографика и минимальный UI."
+                    },
+                    {
+                        id: 'p2',
+                        title: "Keet Cafe",
+                        sub: "Сайт кафе",
+                        color: "linear-gradient(135deg,#232323,#141414)",
+                        detail: "Страницы меню, бронирование и адаптивный дизайн."
+                    },
+                    {
+                        id: 'p3',
+                        title: "Портфолио Апп",
+                        sub: "Интерактивный UI",
+                        color: "linear-gradient(135deg,#2a2a2a,#121212)",
+                        detail: "Интерактивная сетка проектов с анимациями."
+                    },
+                    {
+                        id: 'p4',
+                        title: "Проект 4",
+                        sub: "Новый дизайн",
+                        color: "linear-gradient(135deg,#252525,#121212)",
+                        detail: "Демо проект с галереей."
+                    },
+                    {
+                        id: 'p5',
+                        title: "Проект 5",
+                        sub: "Новый дизайн",
+                        color: "linear-gradient(135deg,#282828,#131313)",
+                        detail: "Демо проект с галереей."
+                    },
+                    {
+                        id: 'p6',
+                        title: "Проект 6",
+                        sub: "Новый дизайн",
+                        color: "linear-gradient(135deg,#292929,#141414)",
+                        detail: "Демо проект с галереей."
+                    },
+                    {
+                        id: 'p7',
+                        title: "Проект 7",
+                        sub: "Новый дизайн",
+                        color: "linear-gradient(135deg,#2a2a2a,#151515)",
+                        detail: "Демо проект с галереей."
+                    },
+                    {
+                        id: 'p8',
+                        title: "Проект 8",
+                        sub: "Новый дизайн",
+                        color: "linear-gradient(135deg,#2b2b2b,#161616)",
+                        detail: "Демо проект с галереей."
+                    },
+                    {
+                        id: 'p9',
+                        title: "Проект 9",
+                        sub: "Новый дизайн",
+                        color: "linear-gradient(135deg,#2c2c2c,#171717)",
+                        detail: "Демо проект с галереей."
+                    }
+                ]
+            }
+        };
+
+        // initial state
+        const state = {
+            lang: 'en',
+            activePage: 'home',
+            activeProject: null
+        };
+
+        /*******************************
+         * DOM references
+         *******************************/
+        const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+        const pages = Array.from(document.querySelectorAll('.page'));
+        const langBtns = Array.from(document.querySelectorAll('.lang-btn'));
+        const projectsGrid = document.getElementById('projectsGrid');
+
+        /*******************************
+         * ROUTING & NAV
+         *******************************/
+        function showPage(pageId) {
+            state.activePage = pageId;
+            pages.forEach(p => p.classList.toggle('active', p.id === pageId));
+            navLinks.forEach(a => a.classList.toggle('active', a.dataset.page === pageId));
+            // reset active project when leaving projects
+            if (pageId !== 'projects') {
+                clearActiveProject();
+            }
         }
-      };
 
-      // initial state
-      const state = {
-        lang: 'en',
-        activePage: 'home',
-        activeProject: null
-      };
-
-      /*******************************
-       * DOM references
-       *******************************/
-      const navLinks = Array.from(document.querySelectorAll('.nav-link'));
-      const pages = Array.from(document.querySelectorAll('.page'));
-      const langBtns = Array.from(document.querySelectorAll('.lang-btn'));
-      const projectsGrid = document.getElementById('projectsGrid');
-
-      /*******************************
-       * ROUTING & NAV
-       *******************************/
-      function showPage(pageId){
-        state.activePage = pageId;
-        pages.forEach(p => p.classList.toggle('active', p.id===pageId));
-        navLinks.forEach(a => a.classList.toggle('active', a.dataset.page === pageId));
-        // reset active project when leaving projects
-        if(pageId !== 'projects') {
-          clearActiveProject();
-        }
-      }
-
-      // nav clicks
-      navLinks.forEach(a=>{
-        a.addEventListener('click', e=>{
-          e.preventDefault();
-          const p = a.dataset.page;
-          showPage(p);
-          // reflect in hash
-          location.hash = p;
+        // nav clicks
+        navLinks.forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const p = a.dataset.page;
+                showPage(p);
+                // reflect in hash
+                location.hash = p;
+            });
         });
-      });
 
-      // hash routing on load/change
-      function handleHash(){
-        const h = location.hash.replace('#','');
-        if(h && ['home','projects','contact'].includes(h)){
-          showPage(h);
-        } else {
-          showPage('home');
+        // hash routing on load/change
+        function handleHash() {
+            const h = location.hash.replace('#', '');
+            if (h && ['home', 'projects', 'contact'].includes(h)) {
+                showPage(h);
+            } else {
+                showPage('home');
+            }
         }
-      }
-      window.addEventListener('hashchange', handleHash);
-      handleHash();
 
-      /*******************************
-       * LANGUAGE SWITCHER
-       *******************************/
-      function applyTranslations(){
-        const t = translations[state.lang];
+        window.addEventListener('hashchange', handleHash);
+        handleHash();
 
-        // nav
-        document.querySelector('[data-page="home"]').textContent = t.nav.home;
-        document.querySelector('[data-page="projects"]').textContent = t.nav.projects;
-        document.querySelector('[data-page="contact"]').textContent = t.nav.contact;
+        /*******************************
+         * LANGUAGE SWITCHER
+         *******************************/
+        function applyTranslations() {
+            const t = translations[state.lang];
 
-        // home
-        document.getElementById('home-sub').textContent = t.homeSub;
+            // nav
+            document.querySelector('[data-page="home"]').textContent = t.nav.home;
+            document.querySelector('[data-page="projects"]').textContent = t.nav.projects;
+            document.querySelector('[data-page="contact"]').textContent = t.nav.contact;
 
-        // projects
-        document.getElementById('projects-title').textContent = t.projectsTitle;
-        document.getElementById('projects-desc').textContent = t.projectsDesc;
+            // home
+            document.getElementById('home-sub').textContent = t.homeSub;
 
-        // contact
-        document.getElementById('contact-title').textContent = t.contactTitle;
-        document.getElementById('contact-desc').textContent = t.contactDesc;
-        document.getElementById('contact-address').textContent = t.address;
-        document.getElementById('contact-phone').textContent = t.phone;
-        document.getElementById('contact-email').textContent = t.email;
+            // projects
+            document.getElementById('projects-title').textContent = t.projectsTitle;
+            document.getElementById('projects-desc').textContent = t.projectsDesc;
 
-        // labels
-        document.getElementById('label-name').textContent = t.labels.name;
-        document.getElementById('label-email').textContent = t.labels.email;
-        document.getElementById('label-message').textContent = t.labels.message;
-        document.getElementById('sendBtn').textContent = t.labels.send;
+            // contact
+            document.getElementById('contact-title').textContent = t.contactTitle;
+            document.getElementById('contact-desc').textContent = t.contactDesc;
+            document.getElementById('contact-address').textContent = t.address;
+            document.getElementById('contact-phone').textContent = t.phone;
+            document.getElementById('contact-email').textContent = t.email;
 
-        // footer
-        document.getElementById('footerText').textContent = t.footer;
+            // labels
+            document.getElementById('label-name').textContent = t.labels.name;
+            document.getElementById('label-email').textContent = t.labels.email;
+            document.getElementById('label-message').textContent = t.labels.message;
+            document.getElementById('sendBtn').textContent = t.labels.send;
 
-        // render projects (will use t.projects)
-        renderProjects();
-      }
+            // footer
+            document.getElementById('footerText').textContent = t.footer;
 
-      langBtns.forEach(btn=>{
-        btn.addEventListener('click', ()=>{
-          langBtns.forEach(b=>b.classList.toggle('active', b===btn));
-          state.lang = btn.dataset.lang;
-          applyTranslations();
+            // render projects (will use t.projects)
+            renderProjects();
+        }
+
+        langBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                langBtns.forEach(b => b.classList.toggle('active', b === btn));
+                state.lang = btn.dataset.lang;
+                applyTranslations();
+            });
         });
-      });
 
-      /*******************************
-       * PROJECTS RENDERING & INTERACTION
-       *******************************/
-      function safeEl(tag='div', attrs={}, ...children){
-        const el = document.createElement(tag);
-        for(const k in attrs){
-          if(k === 'class') el.className = attrs[k];
-          else if(k === 'dataset') Object.assign(el.dataset, attrs[k]);
-          else el.setAttribute(k, attrs[k]);
+        /*******************************
+         * PROJECTS RENDERING & INTERACTION
+         *******************************/
+        function safeEl(tag = 'div', attrs = {}, ...children) {
+            const el = document.createElement(tag);
+            for (const k in attrs) {
+                if (k === 'class') el.className = attrs[k];
+                else if (k === 'dataset') Object.assign(el.dataset, attrs[k]);
+                else el.setAttribute(k, attrs[k]);
+            }
+            for (const c of children) if (c !== null && c !== undefined) el.appendChild(typeof c === 'string' ? document.createTextNode(c) : c);
+            return el;
         }
-        for(const c of children) if(c !== null && c !== undefined) el.appendChild(typeof c==='string'? document.createTextNode(c): c);
-        return el;
-      }
 
-      // modal references & logic
-      const modal = document.getElementById('galleryModal');
-      const modalImage = modal.querySelector('.modal-image');
-      const modalCaption = modal.querySelector('.modal-caption');
-      const modalPrev = modal.querySelector('.modal-prev');
-      const modalNext = modal.querySelector('.modal-next');
-      const modalClose = modal.querySelector('.modal-close');
+        // modal references & logic
+        const modal = document.getElementById('galleryModal');
+        const modalImage = modal.querySelector('.modal-image');
+        const modalCaption = modal.querySelector('.modal-caption');
+        const modalPrev = modal.querySelector('.modal-prev');
+        const modalNext = modal.querySelector('.modal-next');
+        const modalClose = modal.querySelector('.modal-close');
 
-      let modalImages = ["images/first.jpg", "images/second.jpeg", "images/third.jpg"];
-      let modalIndex = 0;
+        let modalImages = ["images/first.jpg", "images/second.jpeg", "images/third.jpg"];
+        let modalIndex = 0;
 
-      function updateModalCaption(){
-        modalCaption.textContent = `${modalIndex + 1} / ${modalImages.length}`;
-      }
-      function openModal(images = modalImages, startIndex = 0){
-        modalImages = images;
-        modalIndex = startIndex;
-        modalImage.src = modalImages[modalIndex];
-        updateModalCaption();
-        modal.classList.add('open');
-        modal.setAttribute('aria-hidden', 'false');
-        // trap focus roughly
-        modal.querySelector('.modal-content').focus();
-        // prevent background scroll
-        document.documentElement.style.overflow = 'hidden';
-        document.body.style.overflow = 'hidden';
-      }
-      function closeModal(){
-        modal.classList.remove('open');
-        modal.setAttribute('aria-hidden', 'true');
-        document.documentElement.style.overflow = '';
-        document.body.style.overflow = '';
-      }
-      modalPrev.addEventListener('click', ()=> {
-        modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
-        modalImage.src = modalImages[modalIndex];
-        updateModalCaption();
-      });
-      modalNext.addEventListener('click', ()=> {
-        modalIndex = (modalIndex + 1) % modalImages.length;
-        modalImage.src = modalImages[modalIndex];
-        updateModalCaption();
-      });
-      modalClose.addEventListener('click', closeModal);
-
-      // click outside content closes modal
-      modal.addEventListener('click', (e) => {
-        if(e.target === modal) closeModal();
-      });
-
-      // keyboard navigation for modal + escape to close active project
-      window.addEventListener('keydown', (e) => {
-        if(modal.classList.contains('open')){
-          if(e.key === 'ArrowLeft') modalPrev.click();
-          else if(e.key === 'ArrowRight') modalNext.click();
-          else if(e.key === 'Escape') { closeModal(); clearActiveProject(); }
-        } else {
-          if(e.key === 'Escape') clearActiveProject();
+        function updateModalCaption() {
+            modalCaption.textContent = `${modalIndex + 1} / ${modalImages.length}`;
         }
-      });
 
-      function renderProjects(){
-        projectsGrid.innerHTML = '';
-        const list = translations[state.lang].projects;
+        function openModal(images = modalImages, startIndex = 0) {
+            modalImages = images;
+            modalIndex = startIndex;
+            modalImage.src = modalImages[modalIndex];
+            updateModalCaption();
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            // trap focus roughly
+            modal.querySelector('.modal-content').focus();
+            // prevent background scroll
+            document.documentElement.style.overflow = 'hidden';
+            document.body.style.overflow = 'hidden';
+        }
 
-        list.forEach((p, idx) =>{
-          // create card
-          const card = safeEl('article', { class: 'project-card', dataset: { id: p.id } });
-          const inner = safeEl('div', { class: 'project-inner' });
-          const surface = safeEl('div', { class: 'project-surface' });
-          surface.style.background = p.color;
-          // placeholders: subtle shapes to imply thumbnails
-          surface.innerHTML = `
+        function closeModal() {
+            modal.classList.remove('open');
+            modal.setAttribute('aria-hidden', 'true');
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+        }
+
+        modalPrev.addEventListener('click', () => {
+            modalIndex = (modalIndex - 1 + modalImages.length) % modalImages.length;
+            modalImage.src = modalImages[modalIndex];
+            updateModalCaption();
+        });
+        modalNext.addEventListener('click', () => {
+            modalIndex = (modalIndex + 1) % modalImages.length;
+            modalImage.src = modalImages[modalIndex];
+            updateModalCaption();
+        });
+        modalClose.addEventListener('click', closeModal);
+
+        // click outside content closes modal
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // keyboard navigation for modal + escape to close active project
+        window.addEventListener('keydown', (e) => {
+            if (modal.classList.contains('open')) {
+                if (e.key === 'ArrowLeft') modalPrev.click();
+                else if (e.key === 'ArrowRight') modalNext.click();
+                else if (e.key === 'Escape') {
+                    closeModal();
+                    clearActiveProject();
+                }
+            } else {
+                if (e.key === 'Escape') clearActiveProject();
+            }
+        });
+
+        function renderProjects() {
+            projectsGrid.innerHTML = '';
+            const list = translations[state.lang].projects;
+
+            list.forEach((p, idx) => {
+                // create card
+                const card = safeEl('article', {class: 'project-card', dataset: {id: p.id}});
+                const inner = safeEl('div', {class: 'project-inner'});
+                const surface = safeEl('div', {class: 'project-surface'});
+                surface.style.background = p.color;
+                // placeholders: subtle shapes to imply thumbnails
+                surface.innerHTML = `
             <svg viewBox="0 0 300 180" style="position:absolute;right:-20px;bottom:-10px;width:350px;height:220px;opacity:.06;mix-blend-mode:overlay">
               <defs><linearGradient id="g${idx}" x1="0" x2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#aaaaaa"/></linearGradient></defs>
               <circle cx="60" cy="40" r="80" fill="url(#g${idx})"/>
             </svg>
           `;
-          const overlay = safeEl('div', { class: 'project-overlay' });
-          const title = safeEl('h3', { class: 'project-title' }, p.title );
-          const sub = safeEl('div', { class: 'project-sub' }, p.sub );
-          overlay.appendChild(title); overlay.appendChild(sub);
+                const overlay = safeEl('div', {class: 'project-overlay'});
+                const title = safeEl('h3', {class: 'project-title'}, p.title);
+                const sub = safeEl('div', {class: 'project-sub'}, p.sub);
+                overlay.appendChild(title);
+                overlay.appendChild(sub);
 
-          const details = safeEl('div', { class: 'project-details' }, p.detail );
-          const cta = safeEl('button', { class: 'view-project', type: 'button' }, 'View project');
+                const details = safeEl('div', {class: 'project-details'}, p.detail);
+                const cta = safeEl('button', {class: 'view-project', type: 'button'}, 'View project');
 
-          inner.appendChild(surface);
-          inner.appendChild(overlay);
-          inner.appendChild(details);
-          inner.appendChild(cta);
-          card.appendChild(inner);
-          projectsGrid.appendChild(card);
+                inner.appendChild(surface);
+                inner.appendChild(overlay);
+                inner.appendChild(details);
+                inner.appendChild(cta);
+                card.appendChild(inner);
+                projectsGrid.appendChild(card);
 
-          // event listeners for hover & click
-          card.addEventListener('mouseenter', () => {
-            // subtle z-index boost
-            card.style.zIndex = 8;
-          });
-          card.addEventListener('mouseleave', ()=>{
-            if(!card.classList.contains('active')){
-              card.style.zIndex = null;
-            }
-          });
+                // event listeners for hover & click
+                card.addEventListener('mouseenter', () => {
+                    // subtle z-index boost
+                    card.style.zIndex = 8;
+                });
+                card.addEventListener('mouseleave', () => {
+                    if (!card.classList.contains('active')) {
+                        card.style.zIndex = null;
+                    }
+                });
 
-          card.addEventListener('click', (e) => {
-            // toggle active project (same visual behavior as before)
-            const already = card.classList.contains('active');
-            clearActiveProject();
-            if(!already){
-              card.classList.add('active');
-              state.activeProject = p.id;
-              // ensure visible top stacking on mobile
-              card.style.zIndex = 20;
-              // smooth scroll to center on small screens
-              setTimeout(()=> card.scrollIntoView({behavior:'smooth', block:'center'}), 140);
-              // open modal gallery for this project
-              // all projects use the same three images as specified
-              openModal(["images/first.jpg","images/second.jpeg","images/third.jpg"], 0);
+                card.addEventListener('click', (e) => {
+                    // toggle active project (same visual behavior as before)
+                    const already = card.classList.contains('active');
+                    clearActiveProject();
+                    if (!already) {
+                        card.classList.add('active');
+                        state.activeProject = p.id;
+                        // ensure visible top stacking on mobile
+                        card.style.zIndex = 20;
+                        // smooth scroll to center on small screens
+                        setTimeout(() => card.scrollIntoView({behavior: 'smooth', block: 'center'}), 140);
+                        // open modal gallery for this project
+                        // all projects use the same three images as specified
+                        openModal(["images/first.jpg", "images/second.jpeg", "images/third.jpg"], 0);
+                    } else {
+                        state.activeProject = null;
+                    }
+                });
+
+                // cta button also focuses the project
+                cta.addEventListener('click', (ev) => {
+                    ev.stopPropagation();
+                    card.click();
+                });
+            });
+        }
+
+        function clearActiveProject() {
+            document.querySelectorAll('.project-card.active').forEach(c => {
+                c.classList.remove('active');
+                c.style.zIndex = null;
+            });
+            state.activeProject = null;
+        }
+
+        /*******************************
+         * BURGER MENU FOR MOBILE
+         *******************************/
+        const burger = document.getElementById('burger');
+        const mainNav = document.getElementById('mainNav');
+
+        burger.addEventListener('click', () => {
+            // toggle simple overlay menu by toggling nav display
+            if (mainNav.style.display === 'flex') {
+                mainNav.style.display = '';
+                burger.setAttribute('aria-expanded', 'false');
             } else {
-              state.activeProject = null;
+                mainNav.style.display = 'flex';
+                mainNav.style.position = 'fixed';
+                mainNav.style.right = '16px';
+                mainNav.style.top = '72px';
+                mainNav.style.background = 'rgba(0,0,0,0.55)';
+                mainNav.style.padding = '12px';
+                mainNav.style.borderRadius = '10px';
+                burger.setAttribute('aria-expanded', 'true');
             }
-          });
-
-          // cta button also focuses the project
-          cta.addEventListener('click', (ev)=>{
-            ev.stopPropagation();
-            card.click();
-          });
         });
-      }
 
-      function clearActiveProject(){
-        document.querySelectorAll('.project-card.active').forEach(c => {
-          c.classList.remove('active');
-          c.style.zIndex = null;
+        // close the mobile menu when clicking a nav item (if small screen)
+        navLinks.forEach(a => {
+            a.addEventListener('click', () => {
+                if (window.innerWidth <= 680) {
+                    mainNav.style.display = '';
+                    burger.setAttribute('aria-expanded', 'false');
+                }
+            });
         });
-        state.activeProject = null;
-      }
 
-      /*******************************
-       * BURGER MENU FOR MOBILE
-       *******************************/
-      const burger = document.getElementById('burger');
-      const mainNav = document.getElementById('mainNav');
+        /*******************************
+         * CONTACT FORM (front-end only)
+         *******************************/
+        const contactForm = document.getElementById('contactForm');
+        const formMsg = document.getElementById('formMsg');
 
-      burger.addEventListener('click', ()=>{
-        // toggle simple overlay menu by toggling nav display
-        if(mainNav.style.display === 'flex'){
-          mainNav.style.display = '';
-          burger.setAttribute('aria-expanded','false');
-        } else {
-          mainNav.style.display = 'flex';
-          mainNav.style.position = 'fixed';
-          mainNav.style.right = '16px';
-          mainNav.style.top = '72px';
-          mainNav.style.background = 'rgba(0,0,0,0.55)';
-          mainNav.style.padding = '12px';
-          mainNav.style.borderRadius = '10px';
-          burger.setAttribute('aria-expanded','true');
-        }
-      });
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-      // close the mobile menu when clicking a nav item (if small screen)
-      navLinks.forEach(a=>{
-        a.addEventListener('click', ()=>{
-          if(window.innerWidth <= 680){
-            mainNav.style.display = '';
-            burger.setAttribute('aria-expanded','false');
-          }
+            if (!name || !email || !message) {
+                alert('Please fill all fields.');
+                return;
+            }
+            if (!validateEmail(email)) {
+                alert('Please enter a valid email.');
+                return;
+            }
+
+            const subject = `New message from ${name}`;
+            const body = `Name: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            window.location.href = `mailto:c0d3mama@gmail.com?subject=${subject}&body=${body}`;
         });
-      });
 
-      /*******************************
-       * CONTACT FORM (front-end only)
-       *******************************/
-      const contactForm = document.getElementById('contactForm');
-      const formMsg = document.getElementById('formMsg');
-
-      contactForm.addEventListener('submit', (e)=>{
-        e.preventDefault();
-        formMsg.textContent = '';
-        const name = document.getElementById('name').value.trim();
-        const email = document.getElementById('email').value.trim();
-        const message = document.getElementById('message').value.trim();
-
-        if(!name || !email || !message){
-          formMsg.textContent = 'Please fill all fields.';
-          return;
-        }
-        if(!validateEmail(email)){
-          formMsg.textContent = 'Please enter a valid email.';
-          return;
+        function validateEmail(email) {
+            // digit-by-digit careful regex: basic check
+            // don't overcomplicate: simple RFC-like
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
         }
 
-        // fake "send" animation/feedback
-        const sendBtn = document.getElementById('sendBtn');
-        sendBtn.disabled = true;
-        sendBtn.textContent = 'Sending...';
-        setTimeout(()=>{
-          sendBtn.disabled = false;
-          sendBtn.textContent = translations[state.lang].labels.send;
-          formMsg.textContent = 'Message sent (demo). Thank you!';
-          contactForm.reset();
-        }, 900);
-      });
+        /*******************************
+         * INITIALIZE
+         *******************************/
+        // apply initial translations and render projects
+        applyTranslations();
 
-      function validateEmail(email){
-        // digit-by-digit careful regex: basic check
-        // don't overcomplicate: simple RFC-like
-        const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return re.test(email);
-      }
-
-      /*******************************
-       * INITIALIZE
-       *******************************/
-      // apply initial translations and render projects
-      applyTranslations();
-
-      // small keyboard support: Esc clears project active (handled above too)
-      window.addEventListener('keydown', (e)=>{
-        if(e.key === 'Escape') clearActiveProject();
-      });
-
-      // nice micro-interaction: hide/show header on scroll (optional)
-      let lastScroll = 0;
-      window.addEventListener('scroll', ()=>{
-        const current = window.scrollY;
-        const header = document.querySelector('header');
-        if(window.innerWidth > 680){
-          if(current > lastScroll && current > 80) header.style.transform = 'translateY(-110%)';
-          else header.style.transform = '';
-        }
-        lastScroll = current;
-      });
-
-      // make social icon clicks open real sites (demo: link to #)
-      document.querySelectorAll('.social a').forEach(a=>{
-        a.addEventListener('click', (e)=>{
-          e.preventDefault();
-          // In real site you'd put actual links. For demo we'll give a tiny pulse.
-          a.animate([{transform:'translateY(0)'},{transform:'translateY(-8px)'}], {duration:350, easing:'ease-out'});
+        // small keyboard support: Esc clears project active (handled above too)
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') clearActiveProject();
         });
-      });
 
-      // On first load, if there's a hash, show that page
-      if(location.hash) handleHash();
+        // nice micro-interaction: hide/show header on scroll (optional)
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const current = window.scrollY;
+            const header = document.querySelector('header');
+            if (window.innerWidth > 680) {
+                if (current > lastScroll && current > 80) header.style.transform = 'translateY(-110%)';
+                else header.style.transform = '';
+            }
+            lastScroll = current;
+        });
+
+        // make social icon clicks open real sites (demo: link to #)
+        document.querySelectorAll('.social a').forEach(a => {
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                // In real site you'd put actual links. For demo we'll give a tiny pulse.
+                a.animate([{transform: 'translateY(0)'}, {transform: 'translateY(-8px)'}], {
+                    duration: 350,
+                    easing: 'ease-out'
+                });
+            });
+        });
+
+        // On first load, if there's a hash, show that page
+        if (location.hash) handleHash();
 
     </script>
-  </div>
+</div>
 </body>
 </html>
