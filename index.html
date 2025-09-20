@@ -626,7 +626,7 @@
     <header>
         <div style="display:flex;align-items:center;gap:14px;">
             <a href="index.html" class="brand">ALPHA FACADE</a>
-            <div class="small muted">A junior web-designer</div>
+            <div class="small muted"></div>
         </div>
 
         <nav id="mainNav" aria-label="Main navigation">
@@ -651,7 +651,7 @@
         <section id="home" class="page active" data-page="home" role="region" aria-labelledby="home-title">
             <div class="hero" role="banner">
                 <h1 id="home-title">ALPHA FACADE</h1>
-                <div class="sub" id="home-sub">A JUNIOR WEB-DESIGNER — LANDING PAGE</div>
+                <div class="sub" id="home-sub"></div>
             </div>
         </section>
 
@@ -676,12 +676,11 @@
             <div class="contact-wrap">
                 <div class="contact-left">
                     <h3 id="contact-title">Contact</h3>
-                    <p id="contact-desc" class="muted">If you'd like to get in touch — send me a message. This demo form
-                        performs front-end validation only.</p>
+                    <p id="contact-desc" class="muted">If you'd like to get in touch — send me a message, or reach me by phone.</p>
                     <p><strong>Address</strong><br><span class="small muted"
                                                          id="contact-address">Tbilisi, Georgia</span></p>
                     <p><strong>Phone</strong><br><span class="small muted" id="contact-phone">+995 123 45 678</span></p>
-                    <p><strong>Email</strong><br><span class="small muted" id="contact-email">hello@alpha.dev</span></p>
+                    <p><strong>Email</strong><br><span class="small muted" id="contact-email">info@alphafacade.ge</span></p>
                 </div>
 
                 <div class="contact-right">
@@ -709,7 +708,9 @@
     </main>
 
     <footer>
-        <div id="footerText">Thanks for watching! — ALPHA FACADE</div>
+        <br>
+        <br>
+        <div id="footerText">© 2025 ALPHA FACADE. All rights reserved.</div>
     </footer>
 
     <!-- Social icons at bottom-left -->
@@ -756,16 +757,16 @@
         const translations = {
             en: {
                 nav: {home: "Home", projects: "Projects", contact: "Contact"},
-                homeSub: "A JUNIOR WEB-DESIGNER — LANDING PAGE",
+                homeSub: "",
                 projectsTitle: "Projects",
-                projectsDesc: "Hover and click to bring a project forward. Scalable tiles with animations.",
+                projectsDesc: "To view the projects we have completed, click on the one you want.",
                 contactTitle: "Contact",
-                contactDesc: "If you'd like to get in touch — send me a message. This demo performs front-end validation only.",
+                contactDesc: "If you'd like to get in touch — send me a message, or reach me by phone.",
                 address: "Tbilisi, Georgia",
                 phone: "+995 123 45 678",
-                email: "hello@alpha.dev",
+                email: "info@alphafacade.ge",
                 labels: {name: "Your name", email: "Email", message: "Message", send: "Send Message"},
-                footer: "Thanks for watching! — ALPHA FACADE",
+                footer: "© 2025 Alpha Facade. All rights reserved.",
                 projects: [
                     {
                         id: 'p1',
@@ -843,157 +844,175 @@
             },
             ka: {
                 nav: {home: "მთავარი", projects: "პროექტები", contact: "კონტაქტი"},
-                homeSub: "ახალი ვებ-დიზაინერი — ლენდინგი",
+                homeSub: "",
                 projectsTitle: "პროექტები",
-                projectsDesc: "აჩვენე, მოინახულე და დააკლიკე — პროექტები გამოდის წინა პლანზე.",
+                projectsDesc: "ჩვენს მიერ შესრულებული პროექტები, დასათვალიერებლად დააკლიკეთ თქვენთვის სასურველს.",
                 contactTitle: "კონტაქტი",
-                contactDesc: "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება. დემო ვერსია—შეიძლება მხოლოდ ფორმის ვალიდაცია.",
+                contactDesc: "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება, ან დაგვიკავშირდით მითითებულ ტელეფონის ნომერზე.",
                 address: "თბილისი, საქართველო",
                 phone: "+995 123 45 678",
-                email: "hello@alpha.dev",
+                email: "info@alphafacade.ge",
                 labels: {name: "სახელი", email: "ელ.ფოსტა", message: "შეტყობინება", send: "გაგზავნა"},
-                footer: "გმადლობთ შემოწმებისთვის! — ALPHA FACADE",
+                footer: "© 2025 ალფა ფასადი. ყველა უფლება დაცულია.",
                 projects: [
                     {
                         id: 'p1',
                         title: "ALPHA",
                         sub: "პირადი ბრენდინგი",
                         color: "linear-gradient(135deg,#1f1f1f,#161616)",
-                        detail: "ლენდინგი, თამამი ტაიპოგრაფია და მინიმალური UI."
+                        detail: "ლენდინგი, თამამი ტაიპოგრაფია და მინიმალური UI.",
+                        img: "images/third.jpg"
                     },
                     {
                         id: 'p2',
                         title: "Keet Cafe",
                         sub: "კაფე ვებ",
                         color: "linear-gradient(135deg,#232323,#141414)",
-                        detail: "მენიუ, ბრონირების UI და რეაქტიული დიზაინი."
+                        detail: "მენიუ, ბრონირების UI და რეაქტიული დიზაინი.",
+                        img: "images/second.jpeg"
                     },
                     {
                         id: 'p3',
                         title: "პორტფოლიო აპი",
                         sub: "ინტერაქტიული UI",
                         color: "linear-gradient(135deg,#2a2a2a,#121212)",
-                        detail: "ინტერაქტიული გრიდი და ანიმაციები."
+                        detail: "ინტერაქტიული გრიდი და ანიმაციები.",
+                        img: "images/first.jpg"
                     },
                     {
                         id: 'p4',
                         title: "პროექტი 4",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#252525,#121212)",
-                        detail: "დემო პროექტი გალერეით."
+                        detail: "დემო პროექტი გალერეით.",
+                        img: "images/second.jpeg"
                     },
                     {
                         id: 'p5',
                         title: "პროექტი 5",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#282828,#131313)",
-                        detail: "დემო პროექტი გალერეით."
+                        detail: "დემო პროექტი გალერეით.",
+                        img: "images/third.jpg"
                     },
                     {
                         id: 'p6',
                         title: "პროექტი 6",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#292929,#141414)",
-                        detail: "დემო პროექტი გალერეით."
+                        detail: "დემო პროექტი გალერეით.",
+                        img: "images/first.jpg"
                     },
                     {
                         id: 'p7',
                         title: "პროექტი 7",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "დემო პროექტი გალერეით."
+                        detail: "დემო პროექტი გალერეით.",
+                        img: "images/second.jpeg"
                     },
                     {
                         id: 'p8',
                         title: "პროექტი 8",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "დემო პროექტი გალერეით."
+                        detail: "დემო პროექტი გალერეით.",
+                        img: "images/third.jpg"
                     },
                     {
                         id: 'p9',
                         title: "პროექტი 9",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "დემო პროექტი გალერეით."
+                        detail: "დემო პროექტი გალერეით.",
+                        img: "images/first.jpg"
                     }
                 ]
             },
             ru: {
                 nav: {home: "Главная", projects: "Проекты", contact: "Контакты"},
-                homeSub: "Младший веб-дизайнер — лендинг",
+                homeSub: "",
                 projectsTitle: "Проекты",
-                projectsDesc: "Наведи и кликни — проект выйдет на передний план. Масштабируемые плитки с анимацией.",
+                projectsDesc: "Чтобы просмотреть выполненные нами проекты, нажмите на тот, который хотите увидеть.",
                 contactTitle: "Контакт",
-                contactDesc: "Хотите связаться? Напишите сообщение. Демо — только валидация на стороне клиента.",
+                contactDesc: "Хотите связаться? Напишите сообщение, или позвоните по указанному номеру.",
                 address: "Тбилиси, Грузия",
                 phone: "+995 123 45 678",
-                email: "hello@alpha.dev",
+                email: "info@alphafacade.ge",
                 labels: {name: "Имя", email: "Эл. почта", message: "Сообщение", send: "Отправить"},
-                footer: "Спасибо за просмотр! — ALPHA FACADE",
+                footer: "© 2025 Альфа Фасад. Все права защищены.",
                 projects: [
                     {
                         id: 'p1',
                         title: "ALPHA",
                         sub: "Личный бренд",
                         color: "linear-gradient(135deg,#1f1f1f,#161616)",
-                        detail: "Лендинг, смелая типографика и минимальный UI."
+                        detail: "Лендинг, смелая типографика и минимальный UI.",
+                        img: "images/second.jpeg"
                     },
                     {
                         id: 'p2',
                         title: "Keet Cafe",
                         sub: "Сайт кафе",
                         color: "linear-gradient(135deg,#232323,#141414)",
-                        detail: "Страницы меню, бронирование и адаптивный дизайн."
+                        detail: "Страницы меню, бронирование и адаптивный дизайн.",
+                        img: "images/third.jpg"
                     },
                     {
                         id: 'p3',
                         title: "Портфолио Апп",
                         sub: "Интерактивный UI",
                         color: "linear-gradient(135deg,#2a2a2a,#121212)",
-                        detail: "Интерактивная сетка проектов с анимациями."
+                        detail: "Интерактивная сетка проектов с анимациями.",
+                        img: "images/first.jpg"
                     },
                     {
                         id: 'p4',
                         title: "Проект 4",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#252525,#121212)",
-                        detail: "Демо проект с галереей."
+                        detail: "Демо проект с галереей.",
+                        img: "images/second.jpeg"
                     },
                     {
                         id: 'p5',
                         title: "Проект 5",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#282828,#131313)",
-                        detail: "Демо проект с галереей."
+                        detail: "Демо проект с галереей.",
+                        img: "images/third.jpg"
                     },
                     {
                         id: 'p6',
                         title: "Проект 6",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#292929,#141414)",
-                        detail: "Демо проект с галереей."
+                        detail: "Демо проект с галереей.",
+                        img: "images/first.jpg"
                     },
                     {
                         id: 'p7',
                         title: "Проект 7",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "Демо проект с галереей."
+                        detail: "Демо проект с галереей.",
+                        img: "images/second.jpeg"
                     },
                     {
                         id: 'p8',
                         title: "Проект 8",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "Демо проект с галереей."
+                        detail: "Демо проект с галереей.",
+                        img: "images/third.jpg"
                     },
                     {
                         id: 'p9',
                         title: "Проект 9",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "Демо проект с галереей."
+                        detail: "Демо проект с галереей.",
+                        img: "images/first.jpg"
                     }
                 ]
             }
