@@ -54,6 +54,8 @@
             align-items: center;
             justify-content: space-between;
             gap: 16px;
+            position: relative;
+            z-index: 100;
         }
 
         .brand {
@@ -108,7 +110,7 @@
             transform: translateY(-2px);
         }
 
-        /* burger for mobile */
+        /* ---------- IMPROVED BURGER MENU ---------- */
         .burger {
             display: none;
             background: transparent;
@@ -119,6 +121,13 @@
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            position: relative;
+            z-index: 1001;
+            transition: transform 0.3s ease;
+        }
+
+        .burger:hover {
+            transform: scale(1.05);
         }
 
         .burger .bar {
@@ -126,6 +135,7 @@
             height: 2px;
             background: var(--accent);
             position: relative;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .burger .bar::before, .burger .bar::after {
@@ -135,7 +145,7 @@
             width: 22px;
             height: 2px;
             background: var(--accent);
-            transition: transform var(--duration) var(--ease), opacity var(--duration) var(--ease);
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
         }
 
         .burger .bar::before {
@@ -144,6 +154,167 @@
 
         .burger .bar::after {
             top: 7px;
+        }
+
+        /* Animated burger to X */
+        .burger.active .bar {
+            background: transparent;
+        }
+
+        .burger.active .bar::before {
+            transform: rotate(45deg);
+            top: 0;
+        }
+
+        .burger.active .bar::after {
+            transform: rotate(-45deg);
+            top: 0;
+        }
+
+        /* Full screen mobile menu overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: linear-gradient(135deg, rgba(17, 18, 20, 0.98), rgba(26, 26, 26, 0.98));
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-100%);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .mobile-menu-overlay.open {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+
+        .mobile-menu-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 40px;
+            text-align: center;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .mobile-menu-overlay.open .mobile-menu-content {
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .mobile-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .mobile-nav a {
+            color: var(--muted);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 24px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            position: relative;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .mobile-menu-overlay.open .mobile-nav a {
+            animation: slideInUp 0.5s ease-out forwards;
+        }
+
+        .mobile-menu-overlay.open .mobile-nav a:nth-child(1) { animation-delay: 0.1s; }
+        .mobile-menu-overlay.open .mobile-nav a:nth-child(2) { animation-delay: 0.2s; }
+        .mobile-menu-overlay.open .mobile-nav a:nth-child(3) { animation-delay: 0.3s; }
+
+        .mobile-nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .mobile-nav a:hover,
+        .mobile-nav a.active {
+            color: var(--accent);
+            transform: translateY(-5px);
+        }
+
+        .mobile-nav a:hover::after,
+        .mobile-nav a.active::after {
+            width: 100%;
+        }
+
+        .mobile-lang-switch {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .mobile-menu-overlay.open .mobile-lang-switch {
+            animation: slideInUp 0.5s ease-out 0.4s forwards;
+        }
+
+        .mobile-lang-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 16px;
+            color: var(--muted);
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .mobile-lang-btn.active,
+        .mobile-lang-btn:hover {
+            color: var(--accent);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ---------- Pages container ---------- */
@@ -172,7 +343,6 @@
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
             border-radius: 10px;
             height: 80vh;
-            /*padding:206px;*/
             box-shadow: var(--card-shadow);
             display: flex;
             align-items: center;
@@ -490,7 +660,8 @@
             .social {
                 left: 8px;
                 bottom: 12px;
-                gap: 8px
+                gap: 8px;
+                z-index: 50;
             }
         }
 
@@ -644,6 +815,23 @@
             <span class="bar"></span>
         </button>
     </header>
+
+    <!-- Full Screen Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay">
+        <div class="mobile-menu-content">
+            <nav class="mobile-nav" aria-label="Mobile navigation">
+                <a href="#home" data-page="home" class="mobile-nav-link active">Home</a>
+                <a href="#projects" data-page="projects" class="mobile-nav-link">Projects</a>
+                <a href="#contact" data-page="contact" class="mobile-nav-link">Contact</a>
+            </nav>
+
+            <div class="mobile-lang-switch" role="tablist" aria-label="Language switcher">
+                <button class="mobile-lang-btn active" data-lang="en">EN</button>
+                <button class="mobile-lang-btn" data-lang="ka">KA</button>
+                <button class="mobile-lang-btn" data-lang="ru">RU</button>
+            </div>
+        </div>
+    </div>
 
     <main>
         <!-- Home -->
@@ -845,21 +1033,21 @@
                 nav: {home: "მთავარი", projects: "პროექტები", contact: "კონტაქტი"},
                 homeSub: "",
                 projectsTitle: "პროექტები",
-                projectsDesc: "ჩვენს მიერ შესრულებული პროექტები, დასათვალიერებლად დააკლიკეთ თქვენთვის სასურველს.",
+                projectsDesc: "ჩვენს მიერ შესრულებული პროექტები, დასათვალიერებლად დაკლიკეთ თქვენთვის სასურველს.",
                 contactTitle: "კონტაქტი",
                 contactDesc: "გსურთ დაკავშირება? გამოგვიგზავნეთ შეტყობინება, ან დაგვიკავშირდით მითითებულ ტელეფონის ნომერზე.",
                 address: "თბილისი, საქართველო",
                 phone: "+995 123 45 678",
                 email: "info@alphafacade.ge",
                 labels: {name: "სახელი", email: "ელ.ფოსტა", message: "შეტყობინება", send: "გაგზავნა"},
-                footer: "© 2025 ალფა ფასადი. ყველა უფლება დაცულია.",
+                footer: "© 2025 ალფა ფასადი. ყველა უფლება დაცული.",
                 projects: [
                     {
                         id: 'p1',
                         title: "ALPHA",
                         sub: "პირადი ბრენდინგი",
                         color: "linear-gradient(135deg,#1f1f1f,#161616)",
-                        detail: "ლენდინგი, თამამი ტაიპოგრაფია და მინიმალური UI.",
+                        detail: "ლენდინგი, თამამი ტაიპოგრაფი და მინიმალური UI.",
                         img: "images/third.jpg"
                     },
                     {
@@ -946,7 +1134,7 @@
                         title: "ALPHA",
                         sub: "Личный бренд",
                         color: "linear-gradient(135deg,#1f1f1f,#161616)",
-                        detail: "Лендинг, смелая типографика и минимальный UI.",
+                        detail: "Лендинг, смелая типография и минимальный UI.",
                         img: "images/second.jpeg"
                     },
                     {
@@ -1028,8 +1216,10 @@
          * DOM references
          *******************************/
         const navLinks = Array.from(document.querySelectorAll('.nav-link'));
+        const mobileNavLinks = Array.from(document.querySelectorAll('.mobile-nav-link'));
         const pages = Array.from(document.querySelectorAll('.page'));
         const langBtns = Array.from(document.querySelectorAll('.lang-btn'));
+        const mobileLangBtns = Array.from(document.querySelectorAll('.mobile-lang-btn'));
         const projectsGrid = document.getElementById('projectsGrid');
 
         /*******************************
@@ -1039,13 +1229,14 @@
             state.activePage = pageId;
             pages.forEach(p => p.classList.toggle('active', p.id === pageId));
             navLinks.forEach(a => a.classList.toggle('active', a.dataset.page === pageId));
+            mobileNavLinks.forEach(a => a.classList.toggle('active', a.dataset.page === pageId));
             // reset active project when leaving projects
             if (pageId !== 'projects') {
                 clearActiveProject();
             }
         }
 
-        // nav clicks
+        // nav clicks (desktop)
         navLinks.forEach(a => {
             a.addEventListener('click', e => {
                 e.preventDefault();
@@ -1053,6 +1244,19 @@
                 showPage(p);
                 // reflect in hash
                 location.hash = p;
+            });
+        });
+
+        // mobile nav clicks
+        mobileNavLinks.forEach(a => {
+            a.addEventListener('click', e => {
+                e.preventDefault();
+                const p = a.dataset.page;
+                showPage(p);
+                // reflect in hash
+                location.hash = p;
+                // close mobile menu
+                closeMobileMenu();
             });
         });
 
@@ -1070,18 +1274,64 @@
         handleHash();
 
         /*******************************
+         * IMPROVED MOBILE MENU
+         *******************************/
+        const burger = document.getElementById('burger');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+
+        function openMobileMenu() {
+            mobileMenuOverlay.classList.add('open');
+            burger.classList.add('active');
+            burger.setAttribute('aria-expanded', 'true');
+            // Prevent background scroll
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeMobileMenu() {
+            mobileMenuOverlay.classList.remove('open');
+            burger.classList.remove('active');
+            burger.setAttribute('aria-expanded', 'false');
+            // Restore background scroll
+            document.body.style.overflow = '';
+        }
+
+        burger.addEventListener('click', () => {
+            if (mobileMenuOverlay.classList.contains('open')) {
+                closeMobileMenu();
+            } else {
+                openMobileMenu();
+            }
+        });
+
+        // Close menu when clicking on overlay background
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileMenuOverlay) {
+                closeMobileMenu();
+            }
+        });
+
+        // Close menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenuOverlay.classList.contains('open')) {
+                closeMobileMenu();
+            }
+        });
+
+        /*******************************
          * LANGUAGE SWITCHER
          *******************************/
         function applyTranslations() {
             const t = translations[state.lang];
 
-            // nav
+            // desktop nav
             document.querySelector('[data-page="home"]').textContent = t.nav.home;
             document.querySelector('[data-page="projects"]').textContent = t.nav.projects;
             document.querySelector('[data-page="contact"]').textContent = t.nav.contact;
 
-            // home
-            // document.getElementById('home-sub').textContent = t.homeSub;
+            // mobile nav
+            document.querySelectorAll('.mobile-nav-link[data-page="home"]').forEach(el => el.textContent = t.nav.home);
+            document.querySelectorAll('.mobile-nav-link[data-page="projects"]').forEach(el => el.textContent = t.nav.projects);
+            document.querySelectorAll('.mobile-nav-link[data-page="contact"]').forEach(el => el.textContent = t.nav.contact);
 
             // projects
             document.getElementById('projects-title').textContent = t.projectsTitle;
@@ -1107,9 +1357,21 @@
             renderProjects();
         }
 
+        // Desktop language buttons
         langBtns.forEach(btn => {
             btn.addEventListener('click', () => {
                 langBtns.forEach(b => b.classList.toggle('active', b === btn));
+                mobileLangBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === btn.dataset.lang));
+                state.lang = btn.dataset.lang;
+                applyTranslations();
+            });
+        });
+
+        // Mobile language buttons
+        mobileLangBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                mobileLangBtns.forEach(b => b.classList.toggle('active', b === btn));
+                langBtns.forEach(b => b.classList.toggle('active', b.dataset.lang === btn.dataset.lang));
                 state.lang = btn.dataset.lang;
                 applyTranslations();
             });
@@ -1207,9 +1469,7 @@
                 const surface = safeEl('div', {class: 'project-surface'});
                 surface.style.background = p.color;
                 // placeholders: subtle shapes to imply thumbnails
-                surface.innerHTML =
-            surface.innerHTML = `<img src="${p.img}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;">`;
-          ;
+                surface.innerHTML = `<img src="${p.img}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;">`;
                 const overlay = safeEl('div', {class: 'project-overlay'});
                 const title = safeEl('h3', {class: 'project-title'}, p.title);
                 const sub = safeEl('div', {class: 'project-sub'}, p.sub);
@@ -1271,39 +1531,6 @@
             });
             state.activeProject = null;
         }
-
-        /*******************************
-         * BURGER MENU FOR MOBILE
-         *******************************/
-        const burger = document.getElementById('burger');
-        const mainNav = document.getElementById('mainNav');
-
-        burger.addEventListener('click', () => {
-            // toggle simple overlay menu by toggling nav display
-            if (mainNav.style.display === 'flex') {
-                mainNav.style.display = '';
-                burger.setAttribute('aria-expanded', 'false');
-            } else {
-                mainNav.style.display = 'flex';
-                mainNav.style.position = 'fixed';
-                mainNav.style.right = '16px';
-                mainNav.style.top = '72px';
-                mainNav.style.background = 'rgba(0,0,0,0.55)';
-                mainNav.style.padding = '12px';
-                mainNav.style.borderRadius = '10px';
-                burger.setAttribute('aria-expanded', 'true');
-            }
-        });
-
-        // close the mobile menu when clicking a nav item (if small screen)
-        navLinks.forEach(a => {
-            a.addEventListener('click', () => {
-                if (window.innerWidth <= 680) {
-                    mainNav.style.display = '';
-                    burger.setAttribute('aria-expanded', 'false');
-                }
-            });
-        });
 
         /*******************************
          * CONTACT FORM (front-end only)
