@@ -339,6 +339,13 @@
         }
 
         /* ---------- Home panel ---------- */
+        #home.page {
+            background: url("images/main_back.jpg") no-repeat center center fixed;
+            background-size: cover;
+            border-radius: 10px; /* optional, same as .hero */
+        }
+
+
         .hero {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
             border-radius: 10px;
@@ -837,7 +844,8 @@
         <!-- Home -->
         <section id="home" class="page active" data-page="home" role="region" aria-labelledby="home-title">
             <div class="hero" role="banner">
-                <h1 id="home-title">ALPHA FACADE</h1>
+                <img src="images/logo_main.png">
+<!--                <h1 id="home-title">ALPHA FACADE</h1>-->
                 <div class="sub" id="home-sub"></div>
             </div>
         </section>
