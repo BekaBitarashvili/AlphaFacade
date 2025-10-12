@@ -342,9 +342,8 @@
         #home.page {
             background: url("images/main_back.jpg") no-repeat center center fixed;
             background-size: cover;
-            border-radius: 10px; /* optional, same as .hero */
+            border-radius: 10px;
         }
-
 
         .hero {
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.01));
@@ -845,7 +844,6 @@
         <section id="home" class="page active" data-page="home" role="region" aria-labelledby="home-title">
             <div class="hero" role="banner">
                 <img src="images/logo_main.png">
-<!--                <h1 id="home-title">ALPHA FACADE</h1>-->
                 <div class="sub" id="home-sub"></div>
             </div>
         </section>
@@ -871,7 +869,7 @@
             <div class="contact-wrap">
                 <div class="contact-left">
                     <h3 id="contact-title">Contact</h3>
-                    <p id="contact-desc" class="muted">If you'd like to get in touch — send me a message, or reach me by phone.</p>
+                    <p id="contact-desc" class="muted">If you'd like to get in touch – send me a message, or reach me by phone.</p>
                     <p><strong>Address</strong><br><span class="small muted"
                                                          id="contact-address">Tbilisi, Georgia</span></p>
                     <p><strong>Phone</strong><br><span class="small muted" id="contact-phone">+995 123 45 678</span></p>
@@ -956,7 +954,7 @@
                 projectsTitle: "Projects",
                 projectsDesc: "To view the projects we have completed, click on the one you want.",
                 contactTitle: "Contact",
-                contactDesc: "If you'd like to get in touch — send me a message, or reach me by phone.",
+                contactDesc: "If you'd like to get in touch – send me a message, or reach me by phone.",
                 address: "Tbilisi, Georgia",
                 phone: "+995 123 45 678",
                 email: "info@alphafacade.ge",
@@ -968,72 +966,101 @@
                         title: "ALPHA",
                         sub: "Personal branding",
                         color: "linear-gradient(135deg,#1f1f1f,#161616)",
-                        detail: "Landing page, bold typography and minimal UI.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/cube1_1.jpg",
+                        gallery: [
+                            "images/cube1_1.jpg",
+                            "images/cube1_2.jpg",
+                            "images/cube1_3.jpg"
+                        ]
                     },
                     {
                         id: 'p2',
                         title: "Keet Cafe",
                         sub: "Cafe website",
                         color: "linear-gradient(135deg,#232323,#141414)",
-                        detail: "Menu pages, booking UI and responsive layout.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/cube2_1.jpg",
+                        gallery: [
+                            "images/cube2_1.jpg",
+                            "images/cube2_2.jpg",
+                            "images/cube2_3.jpg"
+                        ]
                     },
                     {
                         id: 'p3',
                         title: "Portfolio App",
                         sub: "Interactive UI",
                         color: "linear-gradient(135deg,#2a2a2a,#121212)",
-                        detail: "Interactive project grid with animations.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/cube3_1.jpg",
+                        gallery: [
+                            "images/cube3_1.jpg",
+                            "images/cube3_2.jpg",
+                            "images/cube3_3.jpg"
+                        ]
                     },
                     {
                         id: 'p4',
                         title: "Project Four",
                         sub: "New design",
                         color: "linear-gradient(135deg,#252525,#121212)",
-                        detail: "Demo project with gallery.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/cube4_1.jpg",
+                        gallery: [
+                            "images/cube4_1.jpg",
+                            "images/cube4_2.jpg",
+                            "images/cube4_3.jpg"
+                        ]
                     },
                     {
                         id: 'p5',
                         title: "Project Five",
                         sub: "New design",
                         color: "linear-gradient(135deg,#282828,#131313)",
-                        detail: "Demo project with gallery.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/cube5_1.jpg",
+                        gallery: [
+                            "images/cube5_1.jpg",
+                            "images/cube5_2.jpg",
+                            "images/cube5_3.jpg"
+                        ]
                     },
                     {
                         id: 'p6',
                         title: "Project Six",
                         sub: "New design",
                         color: "linear-gradient(135deg,#292929,#141414)",
-                        detail: "Demo project with gallery.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/second.jpeg",
+                        gallery: ["images/second.jpeg", "images/first.jpg", "images/third.jpg"]
                     },
                     {
                         id: 'p7',
                         title: "Project Seven",
                         sub: "New design",
                         color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "Demo project with gallery.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/first.jpg",
+                        gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
                     },
                     {
                         id: 'p8',
                         title: "Project Eight",
                         sub: "New design",
                         color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "Demo project with gallery.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/second.jpeg",
+                        gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
                     },
                     {
                         id: 'p9',
                         title: "Project Nine",
                         sub: "New design",
                         color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "Demo project with gallery.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/third.jpg",
+                        gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
                     }
                 ]
             },
@@ -1055,72 +1082,101 @@
                         title: "ALPHA",
                         sub: "პირადი ბრენდინგი",
                         color: "linear-gradient(135deg,#1f1f1f,#161616)",
-                        detail: "ლენდინგი, თამამი ტაიპოგრაფი და მინიმალური UI.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/cube1_1.jpg",
+                        gallery: [
+                            "images/cube1_1.jpg",
+                            "images/cube1_2.jpg",
+                            "images/cube1_3.jpg"
+                        ]
                     },
                     {
                         id: 'p2',
                         title: "Keet Cafe",
                         sub: "კაფე ვებ",
                         color: "linear-gradient(135deg,#232323,#141414)",
-                        detail: "მენიუ, ბრონირების UI და რეაქტიული დიზაინი.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/cube2_1.jpg",
+                        gallery: [
+                            "images/cube2_1.jpg",
+                            "images/cube2_2.jpg",
+                            "images/cube2_3.jpg"
+                        ]
                     },
                     {
                         id: 'p3',
                         title: "პორტფოლიო აპი",
                         sub: "ინტერაქტიული UI",
                         color: "linear-gradient(135deg,#2a2a2a,#121212)",
-                        detail: "ინტერაქტიული გრიდი და ანიმაციები.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/cube3_1.jpg",
+                        gallery: [
+                            "images/cube3_1.jpg",
+                            "images/cube3_2.jpg",
+                            "images/cube3_3.jpg"
+                        ]
                     },
                     {
                         id: 'p4',
                         title: "პროექტი 4",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#252525,#121212)",
-                        detail: "დემო პროექტი გალერეით.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/cube4_1.jpg",
+                        gallery: [
+                            "images/cube4_1.jpg",
+                            "images/cube4_2.jpg",
+                            "images/cube4_3.jpg"
+                        ]
                     },
                     {
                         id: 'p5',
                         title: "პროექტი 5",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#282828,#131313)",
-                        detail: "დემო პროექტი გალერეით.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/cube5_1.jpg",
+                        gallery: [
+                            "images/cube5_1.jpg",
+                            "images/cube5_2.jpg",
+                            "images/cube5_3.jpg"
+                        ]
                     },
                     {
                         id: 'p6',
                         title: "პროექტი 6",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#292929,#141414)",
-                        detail: "დემო პროექტი გალერეით.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/first.jpg",
+                        gallery: ["images/second.jpeg", "images/first.jpg", "images/third.jpg"]
                     },
                     {
                         id: 'p7',
                         title: "პროექტი 7",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "დემო პროექტი გალერეით.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/second.jpeg",
+                        gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
                     },
                     {
                         id: 'p8',
                         title: "პროექტი 8",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "დემო პროექტი გალერეით.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/third.jpg",
+                        gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
                     },
                     {
                         id: 'p9',
                         title: "პროექტი 9",
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "დემო პროექტი გალერეით.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/first.jpg",
+                        gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
                     }
                 ]
             },
@@ -1142,72 +1198,101 @@
                         title: "ALPHA",
                         sub: "Личный бренд",
                         color: "linear-gradient(135deg,#1f1f1f,#161616)",
-                        detail: "Лендинг, смелая типография и минимальный UI.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/cube1_1.jpg",
+                        gallery: [
+                            "images/cube1_1.jpg",
+                            "images/cube1_2.jpg",
+                            "images/cube1_3.jpg"
+                        ]
                     },
                     {
                         id: 'p2',
                         title: "Keet Cafe",
                         sub: "Сайт кафе",
                         color: "linear-gradient(135deg,#232323,#141414)",
-                        detail: "Страницы меню, бронирование и адаптивный дизайн.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/cube2_1.jpg",
+                        gallery: [
+                            "images/cube2_1.jpg",
+                            "images/cube2_2.jpg",
+                            "images/cube2_3.jpg"
+                        ]
                     },
                     {
                         id: 'p3',
                         title: "Портфолио Апп",
                         sub: "Интерактивный UI",
                         color: "linear-gradient(135deg,#2a2a2a,#121212)",
-                        detail: "Интерактивная сетка проектов с анимациями.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/cube3_1.jpg",
+                        gallery: [
+                            "images/cube3_1.jpg",
+                            "images/cube3_2.jpg",
+                            "images/cube3_3.jpg"
+                        ]
                     },
                     {
                         id: 'p4',
                         title: "Проект 4",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#252525,#121212)",
-                        detail: "Демо проект с галереей.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/cube4_1.jpg",
+                        gallery: [
+                            "images/cube4_1.jpg",
+                            "images/cube4_2.jpg",
+                            "images/cube4_3.jpg"
+                        ]
                     },
                     {
                         id: 'p5',
                         title: "Проект 5",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#282828,#131313)",
-                        detail: "Демо проект с галереей.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/cube5_1.jpg",
+                        gallery: [
+                            "images/cube5_1.jpg",
+                            "images/cube5_2.jpg",
+                            "images/cube5_3.jpg"
+                        ]
                     },
                     {
                         id: 'p6',
                         title: "Проект 6",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#292929,#141414)",
-                        detail: "Демо проект с галереей.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/first.jpg",
+                        gallery: ["images/second.jpeg", "images/first.jpg", "images/third.jpg"]
                     },
                     {
                         id: 'p7',
                         title: "Проект 7",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "Демо проект с галереей.",
-                        img: "images/second.jpeg"
+                        detail: "",
+                        img: "images/second.jpeg",
+                        gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
                     },
                     {
                         id: 'p8',
                         title: "Проект 8",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "Демо проект с галереей.",
-                        img: "images/third.jpg"
+                        detail: "",
+                        img: "images/third.jpg",
+                        gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
                     },
                     {
                         id: 'p9',
                         title: "Проект 9",
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "Демо проект с галереей.",
-                        img: "images/first.jpg"
+                        detail: "",
+                        img: "images/first.jpg",
+                        gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
                     }
                 ]
             }
@@ -1407,14 +1492,17 @@
         const modalNext = modal.querySelector('.modal-next');
         const modalClose = modal.querySelector('.modal-close');
 
-        let modalImages = ["images/first.jpg", "images/second.jpeg", "images/third.jpg"];
+        let modalImages = [];
         let modalIndex = 0;
 
         function updateModalCaption() {
             modalCaption.textContent = `${modalIndex + 1} / ${modalImages.length}`;
         }
 
-        function openModal(images = modalImages, startIndex = 0) {
+        function openModal(images, startIndex = 0) {
+            if (!images || images.length === 0) {
+                images = ["images/cube1_1.jpg", "images/cube1_2.jpg", "images/cube1_3.jpg"];
+            }
             modalImages = images;
             modalIndex = startIndex;
             modalImage.src = modalImages[modalIndex];
@@ -1476,7 +1564,6 @@
                 const inner = safeEl('div', {class: 'project-inner'});
                 const surface = safeEl('div', {class: 'project-surface'});
                 surface.style.background = p.color;
-                // placeholders: subtle shapes to imply thumbnails
                 surface.innerHTML = `<img src="${p.img}" alt="${p.title}" style="width:100%;height:100%;object-fit:cover;">`;
                 const overlay = safeEl('div', {class: 'project-overlay'});
                 const title = safeEl('h3', {class: 'project-title'}, p.title);
@@ -1496,7 +1583,6 @@
 
                 // event listeners for hover & click
                 card.addEventListener('mouseenter', () => {
-                    // subtle z-index boost
                     card.style.zIndex = 8;
                 });
                 card.addEventListener('mouseleave', () => {
@@ -1506,19 +1592,16 @@
                 });
 
                 card.addEventListener('click', (e) => {
-                    // toggle active project (same visual behavior as before)
                     const already = card.classList.contains('active');
                     clearActiveProject();
                     if (!already) {
                         card.classList.add('active');
                         state.activeProject = p.id;
-                        // ensure visible top stacking on mobile
                         card.style.zIndex = 20;
-                        // smooth scroll to center on small screens
                         setTimeout(() => card.scrollIntoView({behavior: 'smooth', block: 'center'}), 140);
-                        // open modal gallery for this project
-                        // all projects use the same three images as specified
-                        openModal(["images/first.jpg", "images/second.jpeg", "images/third.jpg"], 0);
+                        // open modal gallery for this project using its specific gallery
+                        const galleryImages = p.gallery || ["images/cube1_1.jpg", "images/cube1_2.jpg", "images/cube1_3.jpg"];
+                        openModal(galleryImages, 0);
                     } else {
                         state.activeProject = null;
                     }
@@ -1567,8 +1650,6 @@
         });
 
         function validateEmail(email) {
-            // digit-by-digit careful regex: basic check
-            // don't overcomplicate: simple RFC-like
             const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return re.test(email);
         }
