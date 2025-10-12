@@ -340,7 +340,7 @@
 
         /* ---------- Home panel ---------- */
         #home.page {
-            background: url("images/main_back.jpg") no-repeat center center fixed;
+            background: url("images/main_image2.jpg") no-repeat center center fixed;
             background-size: cover;
             border-radius: 10px;
         }
@@ -758,7 +758,7 @@
             left: 12px;
             top: 50%;
             transform: translateY(-50%);
-            display: flex;
+            display: none;
             gap: 8px;
         }
 
@@ -783,6 +783,7 @@
             border-radius: 8px;
             cursor: pointer;
             font-weight: 700;
+            display: none;
         }
 
         @media (max-width: 480px) {
@@ -802,7 +803,7 @@
 <div class="wrap" id="app">
     <header>
         <div style="display:flex;align-items:center;gap:14px;">
-            <a href="index.html" class="brand">ALPHA FACADE</a>
+            <a href="index.html" class="brand"><img style="width: 100px; height: 70px" src="images/logo_main.png"></a>
         </div>
 
         <nav id="mainNav" aria-label="Main navigation">
@@ -843,7 +844,7 @@
         <!-- Home -->
         <section id="home" class="page active" data-page="home" role="region" aria-labelledby="home-title">
             <div class="hero" role="banner">
-                <img src="images/logo_main.png">
+<!--                <img src="images/logo_main.png">-->
                 <div class="sub" id="home-sub"></div>
             </div>
         </section>
@@ -1032,36 +1033,40 @@
                         sub: "New design",
                         color: "linear-gradient(135deg,#292929,#141414)",
                         detail: "",
-                        img: "images/second.jpeg",
-                        gallery: ["images/second.jpeg", "images/first.jpg", "images/third.jpg"]
+                        img: "images/cube6_1.jpg",
+                        gallery: [
+                            "images/cube6_1.jpg",
+                            "images/cube6_2.jpg",
+                            "images/cube6_3.jpg"
+                        ]
                     },
-                    {
-                        id: 'p7',
-                        title: "Project Seven",
-                        sub: "New design",
-                        color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "",
-                        img: "images/first.jpg",
-                        gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
-                    },
-                    {
-                        id: 'p8',
-                        title: "Project Eight",
-                        sub: "New design",
-                        color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "",
-                        img: "images/second.jpeg",
-                        gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
-                    },
-                    {
-                        id: 'p9',
-                        title: "Project Nine",
-                        sub: "New design",
-                        color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "",
-                        img: "images/third.jpg",
-                        gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
-                    }
+                    // {
+                    //     id: 'p7',
+                    //     title: "Project Seven",
+                    //     sub: "New design",
+                    //     color: "linear-gradient(135deg,#2a2a2a,#151515)",
+                    //     detail: "",
+                    //     img: "images/first.jpg",
+                    //     gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
+                    // },
+                    // {
+                    //     id: 'p8',
+                    //     title: "Project Eight",
+                    //     sub: "New design",
+                    //     color: "linear-gradient(135deg,#2b2b2b,#161616)",
+                    //     detail: "",
+                    //     img: "images/second.jpeg",
+                    //     gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
+                    // },
+                    // {
+                    //     id: 'p9',
+                    //     title: "Project Nine",
+                    //     sub: "New design",
+                    //     color: "linear-gradient(135deg,#2c2c2c,#171717)",
+                    //     detail: "",
+                    //     img: "images/third.jpg",
+                    //     gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
+                    // }
                 ]
             },
             ka: {
@@ -1148,36 +1153,40 @@
                         sub: "ახალი დიზაინი",
                         color: "linear-gradient(135deg,#292929,#141414)",
                         detail: "",
-                        img: "images/first.jpg",
-                        gallery: ["images/second.jpeg", "images/first.jpg", "images/third.jpg"]
+                        img: "images/cube6_1.jpg",
+                        gallery: [
+                            "images/cube6_1.jpg",
+                            "images/cube6_2.jpg",
+                            "images/cube6_3.jpg"
+                        ]
                     },
-                    {
-                        id: 'p7',
-                        title: "პროექტი 7",
-                        sub: "ახალი დიზაინი",
-                        color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "",
-                        img: "images/second.jpeg",
-                        gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
-                    },
-                    {
-                        id: 'p8',
-                        title: "პროექტი 8",
-                        sub: "ახალი დიზაინი",
-                        color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "",
-                        img: "images/third.jpg",
-                        gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
-                    },
-                    {
-                        id: 'p9',
-                        title: "პროექტი 9",
-                        sub: "ახალი დიზაინი",
-                        color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "",
-                        img: "images/first.jpg",
-                        gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
-                    }
+                    // {
+                    //     id: 'p7',
+                    //     title: "პროექტი 7",
+                    //     sub: "ახალი დიზაინი",
+                    //     color: "linear-gradient(135deg,#2a2a2a,#151515)",
+                    //     detail: "",
+                    //     img: "images/second.jpeg",
+                    //     gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
+                    // },
+                    // {
+                    //     id: 'p8',
+                    //     title: "პროექტი 8",
+                    //     sub: "ახალი დიზაინი",
+                    //     color: "linear-gradient(135deg,#2b2b2b,#161616)",
+                    //     detail: "",
+                    //     img: "images/third.jpg",
+                    //     gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
+                    // },
+                    // {
+                    //     id: 'p9',
+                    //     title: "პროექტი 9",
+                    //     sub: "ახალი დიზაინი",
+                    //     color: "linear-gradient(135deg,#2c2c2c,#171717)",
+                    //     detail: "",
+                    //     img: "images/first.jpg",
+                    //     gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
+                    // }
                 ]
             },
             ru: {
@@ -1264,36 +1273,40 @@
                         sub: "Новый дизайн",
                         color: "linear-gradient(135deg,#292929,#141414)",
                         detail: "",
-                        img: "images/first.jpg",
-                        gallery: ["images/second.jpeg", "images/first.jpg", "images/third.jpg"]
+                        img: "images/cube6_1.jpg",
+                        gallery: [
+                            "images/cube6_1.jpg",
+                            "images/cube6_2.jpg",
+                            "images/cube6_3.jpg"
+                        ]
                     },
-                    {
-                        id: 'p7',
-                        title: "Проект 7",
-                        sub: "Новый дизайн",
-                        color: "linear-gradient(135deg,#2a2a2a,#151515)",
-                        detail: "",
-                        img: "images/second.jpeg",
-                        gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
-                    },
-                    {
-                        id: 'p8',
-                        title: "Проект 8",
-                        sub: "Новый дизайн",
-                        color: "linear-gradient(135deg,#2b2b2b,#161616)",
-                        detail: "",
-                        img: "images/third.jpg",
-                        gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
-                    },
-                    {
-                        id: 'p9',
-                        title: "Проект 9",
-                        sub: "Новый дизайн",
-                        color: "linear-gradient(135deg,#2c2c2c,#171717)",
-                        detail: "",
-                        img: "images/first.jpg",
-                        gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
-                    }
+                    // {
+                    //     id: 'p7',
+                    //     title: "Проект 7",
+                    //     sub: "Новый дизайн",
+                    //     color: "linear-gradient(135deg,#2a2a2a,#151515)",
+                    //     detail: "",
+                    //     img: "images/second.jpeg",
+                    //     gallery: ["images/first.jpg", "images/third.jpg", "images/second.jpeg"]
+                    // },
+                    // {
+                    //     id: 'p8',
+                    //     title: "Проект 8",
+                    //     sub: "Новый дизайн",
+                    //     color: "linear-gradient(135deg,#2b2b2b,#161616)",
+                    //     detail: "",
+                    //     img: "images/third.jpg",
+                    //     gallery: ["images/second.jpeg", "images/third.jpg", "images/first.jpg"]
+                    // },
+                    // {
+                    //     id: 'p9',
+                    //     title: "Проект 9",
+                    //     sub: "Новый дизайн",
+                    //     color: "linear-gradient(135deg,#2c2c2c,#171717)",
+                    //     detail: "",
+                    //     img: "images/first.jpg",
+                    //     gallery: ["images/third.jpg", "images/second.jpeg", "images/first.jpg"]
+                    // }
                 ]
             }
         };
@@ -1553,6 +1566,40 @@
                 if (e.key === 'Escape') clearActiveProject();
             }
         });
+
+        // Touch/Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+        let touchStartY = 0;
+        let touchEndY = 0;
+
+        modalImage.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+            touchStartY = e.changedTouches[0].screenY;
+        }, false);
+
+        modalImage.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            touchEndY = e.changedTouches[0].screenY;
+            handleSwipe();
+        }, false);
+
+        function handleSwipe() {
+            const swipeThreshold = 50; // minimum distance for swipe
+            const horizontalDiff = touchEndX - touchStartX;
+            const verticalDiff = Math.abs(touchEndY - touchStartY);
+
+            // Only trigger if horizontal swipe is larger than vertical (to avoid interfering with scroll)
+            if (Math.abs(horizontalDiff) > swipeThreshold && Math.abs(horizontalDiff) > verticalDiff) {
+                if (horizontalDiff > 0) {
+                    // Swipe right - go to previous image
+                    modalPrev.click();
+                } else {
+                    // Swipe left - go to next image
+                    modalNext.click();
+                }
+            }
+        }
 
         function renderProjects() {
             projectsGrid.innerHTML = '';
